@@ -7,10 +7,20 @@
 }
 
 /* Paleta de cores */
+:root{
+    /* cores */
+    --telaFundo: #0e4377;
+    --botao: #5271ff;
+    --autor: #bb8de6;
+    --sobre: #56a3f0;
+    /* fontes */
+    --tituloH1: url("fonts/AveriaSerifLibre-Bold.ttf");
+    --paragrafo: url('fonts/Fahkwang/Fahkwang-Medium.ttf');
+    --fontBotao: url("fonts/Fahkwang/Fahkwang-Bold.ttf");
+}
 
 body {
     height: 100vh;
-    font-family: 'YAFdJvl8raw-0', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: white;
 }
 
@@ -23,15 +33,20 @@ main {
 }
 
 h1{
-    margin: 40px auto;
+    font-family: var(--tituloH1);
+    margin: 20px 0;
+}
+p{
+    font-family: var(--paragrafo);
 }
 header {
-    background-color: #72162d;
+    background-color: var(--telaFundo);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: 30px;
 }
+
 header a{
     color: white;
 }
@@ -45,31 +60,12 @@ nav ul li a {
     color: white;
 }
 
-a:hover, button:hover {
+a:hover{
     opacity: 0.3;
     text-decoration: underline;
 }
-
-img {
-    display: block;
-    max-width: 100%;
-}
-
-/* Principal */
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    margin: auto;
-}
-
-.container p {
-    text-align: justify;
-}
-
 button {
-    background-color: #5271ff;
+    background-color: var(--botao);
     border-radius: 30px;
     padding: 20px;
     text-align: center;
@@ -80,23 +76,58 @@ button {
     margin-top: 10px;
     opacity: 1.0;
     cursor: pointer;
+    font-family: var(--fontBotao);
+}
+button:hover{
+    background-color: #158b8b;
+    transform: scale(1.1);
+}
+img {
+    display: block;
+    max-width: 100%;
+}
+/* Principal */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: auto;
+}
+.container h1{
+    max-width: 316px;
+    letter-spacing: 0em;
+    font-size: 3em;
+}
+.container p {
+    text-align: justify;
 }
 
-.sobre{
-    background-color: #72162d;
+/* disponibilidade da empresa */
+.disponivel{
+background-color: var(--sobre) !important;
+}
+/* Pagina sobre a empresa */
+.sobre, .disponivel{
+    background-color: var(--telaFundo);
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     text-align: center;
 }
-.sobre p, .agendamento p{
+.sobre h1{
+    margin-top: 50px;
+}
+.sobre p, .agendamento p, .disponivel p{
+    max-width: 350px;
     line-height: 1.49em;
     text-align: center;
     text-transform: none;
     letter-spacing: 0.26em;
+    font-family: var(--paragrafo);
 }
-.sobre img{
+.sobre img, .disponivel img{
     margin: 40px 0;
     width: 600px;
 }
@@ -121,7 +152,7 @@ button {
 /* depoimento */
 .containerDepoimento{
     width: 100%;
-    background-color: #72162d;
+    background-color: var(--telaFundo);
 }
 .depoimento{
     width: 400px;
@@ -140,9 +171,10 @@ button {
     height: 250px;
     max-width: 300px;
 }
+/* autor */
 .autor, .depoimento h1{
     margin-top: 30px;
-    color: #a54899;
+    color: var(--autor);
     font-weight: bolder;
 }
 
