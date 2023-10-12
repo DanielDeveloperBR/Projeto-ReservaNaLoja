@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 * {
     margin: 0;
     padding: 0;
@@ -7,7 +9,7 @@
 }
 
 /* Paleta de cores */
-:root{
+:root {
     /* cores */
     --telaFundo: #0e4377;
     --botao: #5271ff;
@@ -22,34 +24,39 @@
 body {
     height: 100vh;
     color: white;
+    background-color: black;
 }
 
 main {
-    max-width: 1200px;
     min-width: 300px;
     background-color: #000;
-    width: 100%;
     margin: auto;
+    width: 100%;
 }
 
-h1{
+h1 {
     font-family: var(--tituloH1);
     margin: 20px 0;
 }
-p{
+
+p {
     font-family: var(--paragrafo);
 }
+
 header {
     background-color: var(--telaFundo);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px;
+    padding: 30px 20px;
+    width: 100%;
+    position: relative;
 }
 
-header a{
+header a {
     color: white;
 }
+
 nav li {
     display: inline-block;
     margin-left: 10px;
@@ -58,12 +65,14 @@ nav li {
 nav ul li a {
     padding: 20px;
     color: white;
+    font-size: 18px;
 }
 
-a:hover{
+a:hover {
     opacity: 0.3;
     text-decoration: underline;
 }
+
 button {
     background-color: var(--botao);
     border-radius: 30px;
@@ -73,53 +82,64 @@ button {
     outline: none;
     color: white;
     font-weight: bolder;
-    margin-top: 10px;
+    margin: 10px 5px;
     opacity: 1.0;
     cursor: pointer;
     font-family: var(--fontBotao);
 }
-button:hover{
+
+button:hover {
     background-color: #158b8b;
     transform: scale(1.1);
 }
+
 img {
     display: block;
     max-width: 100%;
 }
+
 /* Principal */
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
     margin: auto;
+    max-width: 100%;
 }
-.container h1{
+
+.container h1 {
     max-width: 316px;
     letter-spacing: 0em;
-    font-size: 3em;
+    font-size: 4em;
 }
+
 .container p {
     text-align: justify;
+    max-width: 200px;
 }
 
 /* disponibilidade da empresa */
-.disponivel{
-background-color: var(--sobre) !important;
+.disponivel {
+    background: linear-gradient(90deg, var(--sobre), var(--autor)) !important;
 }
+
 /* Pagina sobre a empresa */
-.sobre, .disponivel{
-    background-color: var(--telaFundo);
+.sobre,
+.disponivel {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     text-align: center;
 }
-.sobre h1{
+
+.sobre h1 {
     margin-top: 50px;
 }
-.sobre p, .agendamento p, .disponivel p{
+
+.sobre p,
+.agendamento p,
+.disponivel p {
     max-width: 350px;
     line-height: 1.49em;
     text-align: center;
@@ -127,34 +147,46 @@ background-color: var(--sobre) !important;
     letter-spacing: 0.26em;
     font-family: var(--paragrafo);
 }
-.sobre img, .disponivel img{
+
+.sobre img,
+.disponivel img {
     margin: 40px 0;
     width: 600px;
 }
-.sobre button{
+
+.sobre button {
     width: 60%;
     margin: 30px 0px;
 }
+
 /* agendamento */
 
-.agendamento{
+.agendamento {
+    background: linear-gradient(270deg, var(--telaFundo), black);
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     text-align: center;
 }
-.agendamento button{
+
+.agendamento img {
+    margin-top: 20px;
+}
+
+.agendamento button {
     width: 40%;
     padding: 40px;
     margin: 20px auto;
 }
+
 /* depoimento */
-.containerDepoimento{
+.containerDepoimento {
     width: 100%;
     background-color: var(--telaFundo);
 }
-.depoimento{
+
+.depoimento {
     width: 400px;
     margin: auto;
     display: flex;
@@ -162,7 +194,8 @@ background-color: var(--sobre) !important;
     align-items: center;
     flex-direction: column;
 }
-.depoimento div{
+
+.depoimento div {
     border: 3px solid white;
     margin: 30px auto;
     padding: 30px;
@@ -171,24 +204,56 @@ background-color: var(--sobre) !important;
     height: 250px;
     max-width: 300px;
 }
+
 /* autor */
-.autor, .depoimento h1{
+.autor,
+.depoimento h1 {
     margin-top: 30px;
     color: var(--autor);
     font-weight: bolder;
 }
 
 /* footer */
-
-footer{
-    background-color: white;
-    margin-top: 20px;
+footer {
+    background-color: black;
     text-align: center;
-    color: #000;
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-footer div{
-    grid-row: 3;
+
+footer>div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
     padding: 20px;
+}
+
+footer div i {
+    font-size: 20px;
+}
+
+/* icon */
+.social {
+    transition: transform 0.3s, opacity 0.3s;
+    cursor: pointer;
+}
+
+.social:hover {
+    transform: scale(1.3);
+    opacity: 0.7;
+}
+
+.fa-envelope {
+    color: red;
+}
+
+.fa-whatsapp {
+    color: green;
+}
+
+.fa-phone {
+    color: blue;
 }

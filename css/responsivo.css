@@ -1,0 +1,61 @@
+@charset "UTF-8";
+
+#hamb {
+    display: none;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 10px;
+}
+
+/* tablet */
+@media all and (max-width: 690px) {
+    nav {
+        display: none;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--telaFundo);
+        opacity: 0.9;
+        position: absolute;
+    }
+
+    nav li {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 600;
+    }
+
+    nav a {
+        padding: 15px;
+        color: white;
+        font-size: 1.2em;
+    }
+
+    #hamb {
+        display: block;
+    }
+
+    main {
+        width: 100%;
+    }
+
+    .container h1 {
+        font-size: 4em;
+    }
+}
+
+@media all and (max-width: 512px) {
+    .container h1 {
+        font-size: 3em;
+    }
+
+    .container {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .container img {
+        width: 100%;
+    }
+}
