@@ -35,7 +35,6 @@
     #hamb {
         display: block;
     }
-<<<<<<< HEAD
 
     main {
         width: 100%;
@@ -44,10 +43,7 @@
     .container h1 {
         font-size: 4em;
     }
-=======
-    .container h1 {
-        font-size: 4em;
-    }
+
     .depoimento{
         max-width: 90%;
     }
@@ -55,17 +51,12 @@
         width: auto;
         padding: 20px;
     }
->>>>>>> 8256c61 (Melhorei a responsividade)
 }
 
 @media all and (max-width: 512px) {
     .container h1 {
         font-size: 3em;
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> 8256c61 (Melhorei a responsividade)
     .container {
         flex-direction: column;
         width: 100%;
@@ -73,5 +64,12 @@
 
     .container img {
         width: 100%;
+    }
+}
+
+@media all and (min-width: 1200px){
+    section{
+        border-radius: 20px;
+        margin: 30px auto;
     }
 }

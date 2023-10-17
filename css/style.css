@@ -27,15 +27,6 @@ body {
     background-color: black;
 }
 
-<<<<<<< HEAD
-main {
-    min-width: 300px;
-    background-color: #000;
-    margin: auto;
-    width: 100%;
-}
-=======
->>>>>>> 8256c61 (Melhorei a responsividade)
 
 h1 {
     font-family: var(--tituloH1);
@@ -71,8 +62,6 @@ nav ul li a {
     font-size: 18px;
 }
 
-<<<<<<< HEAD
-=======
 main {
     min-width: 300px;
     max-width: 1200px;
@@ -80,7 +69,6 @@ main {
     margin: auto;
     width: 100%;
 }
->>>>>>> 8256c61 (Melhorei a responsividade)
 a:hover {
     opacity: 0.3;
     text-decoration: underline;
