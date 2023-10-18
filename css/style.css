@@ -1,0 +1,260 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+/* Paleta de cores */
+:root {
+    /* cores */
+    --telaFundo: #0e4377;
+    --botao: #5271ff;
+    --autor: #bb8de6;
+    --sobre: #56a3f0;
+    /* fontes */
+    --tituloH1: url("fonts/AveriaSerifLibre-Bold.ttf");
+    --paragrafo: url('fonts/Fahkwang/Fahkwang-Medium.ttf');
+    --fontBotao: url("fonts/Fahkwang/Fahkwang-Bold.ttf");
+}
+
+body {
+    height: 100vh;
+    color: white;
+    background-color: black;
+}
+
+
+h1 {
+    font-family: var(--tituloH1);
+    margin: 20px 0;
+}
+
+p {
+    font-family: var(--paragrafo);
+}
+
+header {
+    background-color: var(--telaFundo);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 20px;
+    width: 100%;
+    position: relative;
+}
+
+header a {
+    color: white;
+}
+
+nav li {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+nav ul li a {
+    padding: 20px;
+    color: white;
+    font-size: 18px;
+}
+
+main {
+    min-width: 300px;
+    max-width: 1200px;
+    background-color: #000;
+    margin: auto;
+    width: 100%;
+}
+a:hover {
+    opacity: 0.3;
+    text-decoration: underline;
+}
+
+button {
+    background-color: var(--botao);
+    border-radius: 30px;
+    padding: 20px;
+    text-align: center;
+    border: none;
+    outline: none;
+    color: white;
+    font-weight: bolder;
+    margin: 10px 5px;
+    opacity: 1.0;
+    cursor: pointer;
+    font-family: var(--fontBotao);
+}
+
+button:hover {
+    background-color: #158b8b;
+    transform: scale(1.1);
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+/* Principal */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    max-width: 100%;
+}
+
+.container h1 {
+    max-width: 316px;
+    letter-spacing: 0em;
+    font-size: 4em;
+}
+
+.container p {
+    text-align: justify;
+    max-width: 200px;
+}
+
+/* disponibilidade da empresa */
+.disponivel {
+    background: linear-gradient(90deg, var(--sobre), var(--autor)) !important;
+}
+
+/* Pagina sobre a empresa */
+.sobre,
+.disponivel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.sobre h1 {
+    margin-top: 50px;
+}
+
+.sobre p,
+.agendamento p,
+.disponivel p {
+    max-width: 350px;
+    line-height: 1.49em;
+    text-align: center;
+    text-transform: none;
+    letter-spacing: 0.26em;
+    font-family: var(--paragrafo);
+}
+
+.sobre img,
+.disponivel img {
+    margin: 40px 0;
+    width: 600px;
+}
+
+.sobre button {
+    width: 60%;
+    margin: 30px 0px;
+}
+
+/* agendamento */
+
+.agendamento {
+    background: linear-gradient(270deg, var(--telaFundo), black);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.agendamento img {
+    margin-top: 20px;
+}
+
+.agendamento button {
+    width: 40%;
+    padding: 40px;
+    margin: 20px auto;
+}
+
+/* depoimento */
+.containerDepoimento {
+    width: 100%;
+    background-color: var(--telaFundo);
+}
+
+.depoimento {
+    width: 400px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.depoimento div {
+    border: 3px solid white;
+    margin: 30px auto;
+    padding: 30px;
+    text-align: center;
+    border-radius: 15px;
+    height: 250px;
+    max-width: 300px;
+}
+
+/* autor */
+.autor,
+.depoimento h1 {
+    margin-top: 30px;
+    color: var(--autor);
+    font-weight: bolder;
+}
+
+/* footer */
+footer {
+    background-color: black;
+    text-align: center;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+footer>div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    padding: 20px;
+}
+
+footer div i {
+    font-size: 20px;
+}
+
+/* icon */
+.social {
+    transition: transform 0.3s, opacity 0.3s;
+    cursor: pointer;
+}
+
+.social:hover {
+    transform: scale(1.3);
+    opacity: 0.7;
+}
+
+.fa-envelope {
+    color: red;
+}
+
+.fa-whatsapp {
+    color: green;
+}
+
+.fa-phone {
+    color: blue;
+}
