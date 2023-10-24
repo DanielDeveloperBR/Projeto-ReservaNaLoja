@@ -1,0 +1,31 @@
+body{
+    display: flex;
+    justify-content: center;
+    margin: 0;
+}
+form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2em;
+    background-color: #111172;
+    margin: auto;
+    max-width: 20em;
+    width: 100%;
+    border-radius: 3em;
+
+}
+form button{
+    width: 100%;
+    padding: 5px;
+}
+form input{
+    border-radius: 10px;
+    padding: 5px;
+    margin: 10px auto;
+    width: 100%;
+}
+form label{
+    text-align: center;
+}

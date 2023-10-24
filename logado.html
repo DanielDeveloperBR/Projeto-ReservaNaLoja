@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logado</title>
+</head>
+
+<body>
+    <h1>Logado</h1>
+    <button>Logout</button>
+</body>
+
+<script>
+    const token = localStorage.getItem('token');
+    if (!token) {
+        window.location.href = "login.html";
+    }
+
+    const botao = document.querySelector("button")
+    botao.addEventListener("click", () => {
+        fetch('http://localhost:3000/logout', {
+            method: 'POST'
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log("saiu com sucesso: " + data.message)
+        localStorage.clear()
+            window.location.href = "login.html"
+        })
+        .catch((Error) => {
+            console.error("algum erro " + Error)
+        })
+    })
+</script>
+
+</html>
