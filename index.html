@@ -9,13 +9,14 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="fontawesome-free-6.4.2-web/css/all.css">
     <link rel="stylesheet" href="css/responsivo.css">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 </head>
 
 <body>
 
     <header>
-        <a href="">LOGO</a>
-        <span id="hamb"><i class="fa-solid fa-bars" ></i></span>
+        <a href=""><img src="img/logo.png" alt="logo"></a>
+        <span id="hamb"><i class="fa-solid fa-bars"></i></span>
         <nav>
             <ul>
                 <li><a href="cadastrar.html">Agendamento</a></li>
@@ -34,8 +35,9 @@
                 <button>Serei Cliente</button>
                 <button>Serei Empresa</button>
             </div>
-            <div><img src="img/teste.jpeg" alt="celular"></div>
+            <div><img src="img/agenda-1.png" alt="celular"></div>
         </section>
+        <!-- Aqui mostra os horarios disponiveis da empresa -->
         <section class="disponivel">
             <div>
                 <h1>Está disponivel esse horario</h1>
@@ -45,9 +47,10 @@
                 </p>
             </div>
             <div>
-                <img src="img/teste.jpeg" alt="agendamento">
+                <img src="img/agenda_3.png" alt="agendamento">
             </div>
         </section>
+        <!-- Sobre a empresa -->
         <section class="sobre">
             <h1>Sobre a empresa</h1>
             <p>Fale sobre as características mais importantes deste produto ou serviço. Destacar as mais populares
@@ -55,9 +58,10 @@
                 mais populares funciona também!</p>
             <button>Saiba mais</button>
         </section>
+        <!-- Um pouco mais -->
         <section class="agendamento">
             <div>
-                <img src="img/teste.jpeg" alt="aqui">
+                <img src="img/grafico - Agenda.png" alt="aqui">
             </div>
             <div>
                 <h1>Reserve na loja</h1>
@@ -69,7 +73,7 @@
             <button>Cadastrar Empresa</button>
         </section>
         <section class="containerDepoimento">
-
+            <!-- Depoimento -->
             <div class="depoimento">
                 <h1>Reserve na loja</h1>
                 <div>
@@ -93,29 +97,42 @@
     </main>
     <footer>
         <h1>Fale conosco</h1>
-        <div>
-            <i class="fa-brands fa-whatsapp social"></i>
-            <i class="fa-solid fa-phone social"></i>
-            <i class="fa-regular fa-envelope social"></i>
+        <div class="containerSocial">
+            <div class="contatos">
+
+                <p>(21) 96778-2777</p>
+                <i class="fa-brands fa-whatsapp social"></i>
+
+            </div>
+            <div class="contatos">
+                <p>(21) 96778-2777</p>
+                <i class="fa-solid fa-phone social"></i>
+            </div>
+            <div class="contatos">
+                <p>danieldetrabalho1@gmail.com</p>
+                <i class="fa-regular fa-envelope social"></i>
+            </div>
         </div>
-        <div><img src="img/teste.jpeg" alt=""></div>
+
+        <div><img src="img/agenda-footer.png" alt="">
+        </div>
         <p>&copy; Todos os direitos reservados</p>
     </footer>
     <script>
         const nav = document.querySelector("nav")
         const hamb = document.getElementById("hamb")
-        hamb.addEventListener("click", ()=>{
-            if (nav.style.display == "none" || nav.style.display == ""){
+        hamb.addEventListener("click", () => {
+            if (nav.style.display == "none" || nav.style.display == "") {
                 nav.style.display = "block"
-            }else{
+            } else {
                 nav.style.display = "none"
             }
         })
 
-        window.addEventListener("resize", ()=>{
-            if (window.innerWidth >= 690){
+        window.addEventListener("resize", () => {
+            if (window.innerWidth >= 690) {
                 nav.style.display = "block"
-            }else{
+            } else {
                 nav.style.display = "none"
             }
         })

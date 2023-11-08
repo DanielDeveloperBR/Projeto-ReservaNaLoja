@@ -54,6 +54,14 @@
 }
 
 @media all and (max-width: 512px) {
+    .contatos p{
+        display: none;
+    }
+    .containerSocial{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
     .container h1 {
         font-size: 3em;
     }
@@ -69,7 +77,6 @@
 
 @media all and (min-width: 1200px){
     section{
-        border-radius: 20px;
         margin: 30px auto;
     }
 }

@@ -1,21 +1,63 @@
 body{
     display: flex;
     justify-content: center;
-    margin: 0;
+    align-items: center;
+    background: linear-gradient(to right, #666FF8, #FE66C5);
 }
-form{
+
+
+.containerForm{
+    border-radius: 10px;
+    min-width: 300px;
+    max-width: 1200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 100%;
+    border: 1px solid rgb(255, 255, 255);
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.445);
+}
+.cadastro{
+    width: 100%;
+    height: 500px;
+    background-image: url('../img/grafico\ -\ Agenda.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center right;
+    margin: auto;
+    border-right: 1px solid white;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+
+}
+.cadastro p{
+    font-size: 20px;
+    color: black;
+}
+.formCadastro, .formLogin{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding: 2em;
-    background-color: #111172;
+    padding: 1.3em;
     margin: auto;
-    max-width: 20em;
+    max-width: 18em;
     width: 100%;
-    border-radius: 3em;
+    border-radius: 2em;
 
 }
+.formLogin{
+    height: 100%;
+}
+form h1{
+    margin: 0;
+    margin-bottom: 10px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.445);
+    padding: 4px;
+    border-radius: 10px;
+}
+
 form button{
     width: 100%;
     padding: 5px;
@@ -25,7 +67,27 @@ form input{
     padding: 5px;
     margin: 10px auto;
     width: 100%;
+    border: none;
+    outline: none;
 }
 form label{
     text-align: center;
+}
+
+.novoUsuario{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.novoUsuario a{
+    margin-left: 0.3em;
+    color: var(--botao);
+}
+@media all and (max-width: 815px){
+    .cadastro{
+        display: none;
+    }
+    .containerForm{
+        width: 0;
+    }
 }

@@ -42,11 +42,13 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px 20px;
+    padding: 10px 20px;
     width: 100%;
     position: relative;
 }
-
+header img {
+    width: 5em;
+}
 header a {
     color: white;
 }
@@ -60,14 +62,17 @@ nav ul li a {
     padding: 20px;
     color: white;
     font-size: 18px;
+    white-space: nowrap;
 }
 
-main {
+main, .containerGeral {
     min-width: 300px;
-    max-width: 1200px;
     background-color: #000;
     margin: auto;
     width: 100%;
+}
+.containerGeral{
+    background-image: linear-gradient(45deg, var(--botao), var(--telaFundo));
 }
 a:hover {
     opacity: 0.3;
@@ -115,7 +120,7 @@ img {
 }
 
 .container p {
-    text-align: justify;
+    text-align: start;
     max-width: 200px;
 }
 
@@ -173,6 +178,7 @@ img {
 
 .agendamento img {
     margin-top: 20px;
+    width: 20em;
 }
 
 .agendamento button {
@@ -183,6 +189,8 @@ img {
 
 /* depoimento */
 .containerDepoimento {
+    background: no-repeat fixed url('../img/celular_agenda_2.png') center center ;
+    background-size: cover;
     width: 100%;
     background-color: var(--telaFundo);
 }
@@ -197,6 +205,7 @@ img {
 }
 
 .depoimento div {
+    background-color: #27322980;
     border: 3px solid white;
     margin: 30px auto;
     padding: 30px;
@@ -226,23 +235,47 @@ footer {
 
 footer>div {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     gap: 10px;
     margin-top: 10px;
     padding: 20px;
+    flex-direction: row;
+
+}
+.containerSocial{
+    display: block;
+    max-width: 500px;
+    width: 100%;
+    margin: auto;
+}
+.contatos{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
+.contatos p{
+    width: 50%;
+    padding: 10px;
+    text-align: justify;
+}
+.fa-envelope, .fa-whatsapp, .fa-phone {
+    max-width: 50px;
+    width: 50%;
+    padding: 10px;
+}
 footer div i {
     font-size: 20px;
 }
 
-/* icon */
-.social {
-    transition: transform 0.3s, opacity 0.3s;
-    cursor: pointer;
+footer img{
+    width: 20em;
 }
 
-.social:hover {
+.fa-envelope:hover, .fa-whatsapp:hover, .fa-phone:hover  {
+    transition: transform 0.3s, opacity 0.3s;
+    cursor: pointer;
     transform: scale(1.3);
     opacity: 0.7;
 }
