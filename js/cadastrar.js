@@ -134,7 +134,7 @@ form.addEventListener("submit", (event) => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      "nome": nome, "senha": senha, "email": email, "cep": cep.value, "cidade": cidade, "bairro": bairro, "estado": estado, "endereco": endereco
+      "nome": nome, "senha": senha, "email": email, "cep": cep.value, "bairro": bairro, "cidade": cidade, "endereco": endereco, "estado": estado
     })
   })
     .then(response => response.json())
