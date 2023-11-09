@@ -73,9 +73,9 @@ cep.addEventListener('input', () => {
         cepValido = true
       },
       complete: function () {
-       
-          cep.disabled = false;
-      
+
+        cep.disabled = false;
+
         if (inputBairro) {
           inputBairro.disabled = true;
         }
@@ -137,11 +137,12 @@ form.addEventListener("submit", (event) => {
       "nome": nome, "senha": senha, "email": email, "cep": cep.value, "bairro": bairro, "cidade": cidade, "endereco": endereco, "estado": estado
     })
   })
-    .then(response => response.json())
-    .then((data) => {
-      console.log("Dados recebidos:", JSON.stringify({ data }))
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Erro na solicitação. Status: ' + response.status);
+      }
       form.submit()
+      return response.json();
     })
     .catch(err => console.error("Erro:", err))
 })
-

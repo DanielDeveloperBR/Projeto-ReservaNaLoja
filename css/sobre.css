@@ -1,0 +1,35 @@
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin: 20px 0;
+  }
+  
+  .info {
+    flex: 1;
+    padding: 20px;
+    text-align: left;
+  
+  }
+  
+  .image {
+    flex: 1;
+    padding: 20px;
+    width: 600px;
+    max-width: 100%;
+  }
+  
+  .image img {
+    max-width: 100%;
+  }
+  
+  /* Adicione estilos adicionais de acordo com suas preferências */
+  @media all and (max-width: 700px){
+    .content{
+      flex-direction: column;
+    }
+    .info{
+      order: 1;
+    }
+  }

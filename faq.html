@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserve na Loja</title>
+    <link rel="stylesheet" href="css/style.css">
+    
+    <link rel="stylesheet" href="fontawesome-free-6.4.2-web/css/all.css">
+    <link rel="stylesheet" href="css/responsivo.css">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/faq.css">
+</head>
+
+<body>
+
+    <header>
+        <a href="index.html"><img src="img/logo.png" alt="logo"></a>
+        <span id="hamb"><i class="fa-solid fa-bars"></i></span>
+        <nav>
+            <ul>
+                <li><a href="login.html">login</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="cadastrar.html">Cadastrar-se</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="faq-container">
+        <h1>Perguntas Frequentes</h1>
+        
+        <div class="faq-section">
+            <h2>Geral</h2>
+            <ul>
+                <li>
+                    <p class="question">1. O que é o [Nome do Seu Site]?</p>
+                    <p class="answer">[Sua resposta aqui]</p>
+                </li>
+                <!-- Repita o padrão para outras perguntas gerais -->
+            </ul>
+        </div>
+        
+        <div class="faq-section">
+            <h2>Para Empresas</h2>
+            <ul>
+                <li>
+                    <p class="question">6. Como uma empresa pode se cadastrar no [Nome do Seu Site]?</p>
+                    <p class="answer">[Sua resposta aqui]</p>
+                </li>
+                <!-- Repita o padrão para outras perguntas para empresas -->
+            </ul>
+        </div>
+        
+        <div class="faq-section">
+            <h2>Para Clientes</h2>
+            <ul>
+                <li>
+                    <p class="question">10. Como faço para reservar um horário em uma empresa no [Nome do Seu Site]?</p>
+                    <p class="answer">[Sua resposta aqui]</p>
+                </li>
+                <!-- Repita o padrão para outras perguntas para clientes -->
+            </ul>
+        </div>
+        
+        <div class="faq-section">
+            <h2>Questões Técnicas</h2>
+            <ul>
+                <li>
+                    <p class="question">14. Qual é a tecnologia usada no [Nome do Seu Site]?</p>
+                    <p class="answer">[Sua resposta aqui]</p>
+                </li>
+                <!-- Repita o padrão para outras perguntas técnicas -->
+            </ul>
+        </div>
+        
+        <div class="faq-section">
+            <h2>Contato e Suporte</h2>
+            <ul>
+                <li>
+                    <p class="question">16. Como posso entrar em contato com o suporte do [Nome do Seu Site]?</p>
+                    <p class="answer">[Sua resposta aqui]</p>
+                </li>
+                <!-- Repita o padrão para outras perguntas de suporte -->
+            </ul>
+        </div>
+        <div class="user-question">
+            <h2>Faça sua pergunta</h2>
+            <input type="text" id="user-question-input" placeholder="Digite sua pergunta aqui">
+            <button onclick="submitUserQuestion()">Enviar</button>
+        </div>
+        
+        <div class="faq-section">
+            <h2>Questões Técnicas</h2>
+            <ul>
+                <li>
+                    <p class="question">14. Qual é a tecnologia usada no [Nome do Seu Site]?</p>
+                    <p class="answer">[Sua resposta aqui]</p>
+                </li>
+                <!-- Repita o padrão para outras perguntas técnicas -->
+            </ul>
+        </div>
+        
+        <div class="faq-section">
+            <h2>Contato e Suporte</h2>
+            <ul>
+                <li>
+                    <p class="question">16. Como posso entrar em contato com o suporte do [Nome do Seu Site]?</p>
+                    <p class="answer">[Sua resposta aqui]</p>
+                </li>
+                <!-- Repita o padrão para outras perguntas de suporte -->
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function submitUserQuestion() {
+            const userQuestion = document.getElementById("user-question-input").value;
+            // Aqui você pode processar a pergunta do usuário, armazená-la ou responder a ela dinamicamente.
+            // Por enquanto, vamos apenas exibir um alerta.
+            alert("Sua pergunta: " + userQuestion);
+        }
+    </script>
+</body>
+</html>
+    </div>
+    
+</body>
+</html>

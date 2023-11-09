@@ -2,7 +2,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(to right, #666FF8, #FE66C5);
+    background: linear-gradient(to right, var(--botao), var(--telaFundo));
 }
 
 
