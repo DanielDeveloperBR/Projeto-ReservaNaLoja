@@ -117,25 +117,7 @@
         </div>
         <p>&copy; Todos os direitos reservados</p>
     </footer>
-    <script>
-        const nav = document.querySelector("nav")
-        const hamb = document.getElementById("hamb")
-        hamb.addEventListener("click", () => {
-            if (nav.style.display == "none" || nav.style.display == "") {
-                nav.style.display = "block"
-            } else {
-                nav.style.display = "none"
-            }
-        })
-
-        window.addEventListener("resize", () => {
-            if (window.innerWidth >= 690) {
-                nav.style.display = "block"
-            } else {
-                nav.style.display = "none"
-            }
-        })
-    </script>
+    <script src="js/responsivo.js"></script>
     <script defer src="fontawesome-free-6.4.2-web/js/all.js"></script>
 </body>
 

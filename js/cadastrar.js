@@ -34,6 +34,7 @@ cep.addEventListener('input', () => {
           cepValido = false
           return
         }
+        containerNovosElementos.innerHTML = ""
         containerNovosElementos.classList.add('containerNovosElementos')
         labelBairro = document.createElement('label');
         containerNovosElementos.appendChild(labelBairro);
@@ -138,11 +139,11 @@ form.addEventListener("submit", (event) => {
     })
   })
     .then(response => {
-      if (!response.ok) {
-        throw new Error('Erro na solicitação. Status: ' + response.status);
+      if (response.ok) {
+        window.location.href = "login.html"
+        return response.json();
       }
-      form.submit()
-      return response.json();
+      throw new Error('Erro na solicitação. Status: ' + response.status);
     })
     .catch(err => console.error("Erro:", err))
 })

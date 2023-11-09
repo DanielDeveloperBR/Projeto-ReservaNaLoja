@@ -42,7 +42,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    padding: 5px 20px;
     width: 100%;
     position: relative;
 }
@@ -126,7 +126,7 @@ img {
 
 /* disponibilidade da empresa */
 .disponivel {
-    background: linear-gradient(90deg, var(--sobre), var(--autor)) !important;
+    background: linear-gradient(90deg, var(--sobre), var(--telaFundo)) !important;
 }
 
 /* Pagina sobre a empresa */

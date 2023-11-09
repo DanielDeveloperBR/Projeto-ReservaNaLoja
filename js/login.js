@@ -6,6 +6,7 @@ form.addEventListener("submit", (e) => {
 
     fetch('http://localhost:3000/usuario/login', {
         method: 'POST',
+        credentials: 'include',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -13,16 +14,17 @@ form.addEventListener("submit", (e) => {
         body: JSON.stringify({ "nome": login, "senha": senha })
     })
         .then(response => {
-            if (response.status === 200) {
-                window.location.href = "logado.html";
+            console.log('Cabeçalhos da resposta do servidor:', response.headers);
+            if (response.ok) {
+                document.location.href = "logado.html"
+                return response.json(); // Retorne a resposta JSON para a próxima promessa
             } else {
-                return response.text();
+                throw new Error('Falha na resposta do servidor');
             }
         })
         .then(data => {
-            if (data) {
-                console.error("Erro ao fazer login:", data);
-            }
+            console.log('Cookies recebidos do servidor:', document.cookie);
+            console.log('Resposta do servidor:', data);
         })
         .catch(error => {
             console.error('Erro ao fazer login:', error);
