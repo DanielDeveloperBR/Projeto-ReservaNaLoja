@@ -84,6 +84,8 @@ form input {
     width: 100%;
     border: none;
     outline: none;
+    color: rgb(0, 0, 0);
+    font-weight: 400;
 }
 
 form label {
@@ -105,6 +107,8 @@ form input:focus{
     background-color: var(--telaFundo);
     outline: 0.15em solid blue;
     box-shadow: 2px 2px 3px #00000027;
+    color: white;
+    font-weight: 500;
 }
 form input:focus::placeholder{
     color: #ffffff80;

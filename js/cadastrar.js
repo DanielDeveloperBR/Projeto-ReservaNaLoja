@@ -142,7 +142,7 @@ form.addEventListener("submit", (event) => {
       if (!response.ok) {
         throw new Error('Erro na solicitação. Status: ' + response.status);
       }
-      form.submit()
+      document.location.href="./login.html"
       return response.json();
     })
     .catch(err => console.error("Erro:", err))
