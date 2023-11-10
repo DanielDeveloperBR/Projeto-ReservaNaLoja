@@ -139,11 +139,11 @@ form.addEventListener("submit", (event) => {
     })
   })
     .then(response => {
-      if (response.ok) {
-        window.location.href = "login.html"
-        return response.json();
+      if (!response.ok) {
+        throw new Error('Erro na solicitação. Status: ' + response.status);
       }
-      throw new Error('Erro na solicitação. Status: ' + response.status);
+      form.submit()
+      return response.json();
     })
     .catch(err => console.error("Erro:", err))
 })

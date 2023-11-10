@@ -79,7 +79,7 @@ form button {
 
 form input {
     border-radius: 10px;
-    padding: 5px;
+    padding: 10px;
     margin: 10px auto;
     width: 100%;
     border: none;
@@ -101,12 +101,22 @@ form label {
     color: var(--botao);
 }
 
-@media all and (max-width: 815px) {
+form input:focus{
+    background-color: var(--telaFundo);
+    outline: 0.15em solid blue;
+    box-shadow: 2px 2px 3px #00000027;
+}
+form input:focus::placeholder{
+    color: #ffffff80;
+}
+
+@media all and (max-width: 615px) {
     .cadastro {
         display: none;
     }
 
     .containerForm {
-        width: 0;
+        width: 80%;
+        background-image: linear-gradient(267deg, black, transparent);
     }
 }

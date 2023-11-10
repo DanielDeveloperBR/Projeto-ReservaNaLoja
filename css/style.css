@@ -63,6 +63,7 @@ nav ul li a {
     color: white;
     font-size: 18px;
     white-space: nowrap;
+    cursor: pointer;
 }
 
 main, .containerGeral {
