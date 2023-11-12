@@ -25,21 +25,20 @@ function eventoCep() {
   cepAtual.addEventListener('input', async () => {
     // Remover formatação do CEP e garantir que tem exatamente 8 dígitos
     cepAtual.value = cepAtual.value.replace(/-/g, '');
-    if (cepAtual.value.length !== 8 || cepAtual.value.length > 8) {
+    if (cepAtual.value.length > 8) {
       resetarCampos();
       return;
     }
 
     const response = await fetch(`https://viacep.com.br/ws/${cepAtual.value}/json/`);
     const result = await response.json();
-    if(response.ok){
+    if (response) {
       console.log("foi")
-    }else{
+    } else {
       console.log("fetch nao pegou")
-      console.log("status "+ response.status)
-
+      console.log("status " + response.status)
     }
-    console.log("O resultado: "+result)
+    console.log("O resultado: " + result)
 
     if (response.ok && !result.erro) {
       if (cepAtual === cepCliente) {
@@ -58,6 +57,7 @@ function eventoCep() {
   })
 }
 
+// Resetar o campo do input do CEP
 function resetarCampos() {
   if (cepAtual === cepCliente) {
     const containerNovosElementosCliente = document.querySelector('.containerNovosElementosCliente');
@@ -66,10 +66,11 @@ function resetarCampos() {
     const containerNovosElementosEmpresa = document.querySelector('.containerNovosElementosEmpresa');
     containerNovosElementosEmpresa.innerHTML = ""
   }
-  cepAtual.innerHTML = ""
+  cepAtual.value = ""
   cepValido = false;
 }
 
+// Preechendo os compos dinamicamente usando as class dos containers dos cep
 function preencherCampos(result, formularioAtual) {
   const containerNovosElementosEmpresa = formularioAtual.querySelector('.containerNovosElementosEmpresa');
   const containerNovosElementosCliente = formularioAtual.querySelector('.containerNovosElementosCliente');
@@ -91,7 +92,7 @@ function preencherCampos(result, formularioAtual) {
 }
 
 
-
+// Criar inputs e labels dinamicamente
 function criarInput(labelText, inputValue) {
   if (cepAtual === cepCliente) {
     const containerNovosElementosCliente = document.querySelector('.containerNovosElementosCliente');
@@ -109,7 +110,7 @@ function criarInput(labelText, inputValue) {
     const label = document.createElement('label');
     label.innerHTML = labelText;
     containerNovosElementosEmpresa.appendChild(label);
-    
+
     const input = document.createElement('input');
     input.value = inputValue;
     input.classList.add('cep-info');
@@ -120,13 +121,14 @@ function criarInput(labelText, inputValue) {
 
 }
 
+// Mensagem de erro
 function mostrarMensagem(mensagem) {
   // Implemente a lógica para mostrar a mensagem na interface (pode ser um alert, uma div na página, etc.)
   console.log("que mensagem? " + mensagem);
 }
+
 // Rodando a api do cep
 eventoCep()
-
 
 // Pegar os dados do formulario => formulario.exemplo
 function formularioDados(formulario, nome) {
@@ -219,6 +221,7 @@ formularios.querySelector('#formCliente').addEventListener("submit", (event) => 
 
   if (nome.trim() === "" || senha.trim() === "" || email.trim() === "" || cep.trim() === "" || !cepValido) {
     alert("Preencha todos os campos");
+    console.log("preencha todos os campos")
     return;
   }
 
