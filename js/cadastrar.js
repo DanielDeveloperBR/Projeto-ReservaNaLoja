@@ -1,22 +1,26 @@
 const botaoRadio = document.getElementsByName('opcao')
-const formularioCliente = document.getElementById('formCliente')
-const formularioEmpresa = document.getElementById('formEmpresa')
+const formularios = document.getElementById('formularios')
+let cep = document.querySelector('form #cepCliente');
+
+// Evento do radio
 botaoRadio.forEach(botao => {
   botao.addEventListener("click", () => {
-      if (botao.id === 'empresa') {
-        formularioCliente.style.display = 'none'
-        formularioEmpresa.style.display = "flex"
-      } if (botao.id === 'cliente') {
-        formularioEmpresa.style.display = "none"
-        formularioCliente.style.display = 'flex'
-      }
+    if (botao.id === 'empresa') {
+      formularios.querySelector('#formCliente').style.display = 'none'
+      formularios.querySelector('#formEmpresa').style.display = "flex"
+      cep = formularios.querySelector('#cepEmpresa')
+    } if (botao.id === 'cliente') {
+      cep = formularios.querySelector('#cepCliente')
+      formularios.querySelector('#formEmpresa').style.display = "none"
+      formularios.querySelector('#formCliente').style.display = 'flex'
+    }
   })
 })
-// const form = document.getElementById('formularioCliente');
 let cepValido = false
 
-const cep = document.getElementById('cep');
+
 let labelBairro, labelCidade, labelEndereco, labelEstado, inputBairro, inputCidade, inputEndereco, inputEstado, bairro, estado, cidade, endereco;
+
 
 // Api do cep
 cep.addEventListener('input', () => {
@@ -31,7 +35,7 @@ cep.addEventListener('input', () => {
     cepValido = false
     return
   } else {
-    const elementosAntigos = form.querySelectorAll('.cep-info');
+    const elementosAntigos = formularios.querySelectorAll('.cep-info');
     elementosAntigos.forEach(elemento => elemento.remove());
 
     $.ajax({
@@ -116,13 +120,58 @@ cep.addEventListener('input', () => {
     })
   }
 })
+
+function cadastrarUsuario(evento, formulario, rota) {
+  evento.preventDefault()
+  const nome = formulario.nome.value;
+  const senha = formulario.senha.value;
+  const repetirSenha = formulario.repetirSenha.value;
+  const email = formulario.email.value;
+  if (nome.trim() === "" || senha.trim() === "" || email.trim() === "" || cep.value.trim() === "" || !cepValido) {
+    alert("Preencha todos os campos");
+    return;
+  }
+
+  if (senha.length < 8) {
+    alert("A senha precisa ter mais de 8 caracteres");
+    return;
+  }
+
+  if (senha !== repetirSenha) {
+    alert("As senhas não são iguais.");
+    return;
+  }
+
+  console.log("Formulário enviado:", JSON.stringify({
+    "nome": nome, "senha": senha, "email": email, "cep": cep.value, "cidade": cidade, "bairro": bairro, "estado": estado, "endereço": endereco
+  }));
+  fetch(`http://localhost:3000/${rota}`, {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      "nome": nome, "senha": senha, "email": email, "cep": cep.value, "bairro": bairro, "cidade": cidade, "endereco": endereco, "estado": estado
+    })
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Erro na solicitação. Status: ' + response.status);
+      }
+      document.location.href = "./login.html"
+      return response.json();
+    })
+    .catch(err => console.error("Erro:", err))
+
+}
 // Formulario de cadastrar usuario cliente
-form.addEventListener("submit", (event) => {
+formularioCliente.addEventListener("submit", (event) => {
   event.preventDefault();
-  const nome = form.nome.value;
-  const senha = form.senha.value;
-  const repetirSenha = form.repetirSenha.value;
-  const email = form.email.value;
+  const nome = formularioCliente.nome.value;
+  const senha = formularioCliente.senha.value;
+  const repetirSenha = formularioCliente.repetirSenha.value;
+  const email = formularioCliente.email.value;
 
   if (nome.trim() === "" || senha.trim() === "" || email.trim() === "" || cep.value.trim() === "" || !cepValido) {
     alert("Preencha todos os campos");
@@ -150,6 +199,51 @@ form.addEventListener("submit", (event) => {
     },
     body: JSON.stringify({
       "nome": nome, "senha": senha, "email": email, "cep": cep.value, "bairro": bairro, "cidade": cidade, "endereco": endereco, "estado": estado
+    })
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Erro na solicitação. Status: ' + response.status);
+      }
+      document.location.href = "./login.html"
+      return response.json();
+    })
+    .catch(err => console.error("Erro:", err))
+})
+formularioEmpresa.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const nome = formularioEmpresa.nome.value;
+  const senha = formularioEmpresa.senha.value;
+  const repetirSenha = formularioEmpresa.repetirSenha.value;
+  const email = formularioEmpresa.email.value;
+  const cnpj = formularioEmpresa.cnpj.value
+
+  if (nome.trim() === "" || senha.trim() === "" || email.trim() === "" || cep.value.trim() === "" || !cepValido) {
+    alert("Preencha todos os campos");
+    return;
+  }
+
+  if (senha.length < 8) {
+    alert("A senha precisa ter mais de 8 caracteres");
+    return;
+  }
+
+  if (senha !== repetirSenha) {
+    alert("As senhas não são iguais.");
+    return;
+  }
+
+  console.log("Formulário enviado:", JSON.stringify({
+    "nome": nome, "empresa": empresa, "senha": senha, "email": email, "cep": cep.value, "cidade": cidade, "bairro": bairro, "estado": estado, "endereço": endereco
+  }));
+  fetch('http://localhost:3000/empresa', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      "nome": nome, "empresa": empresa, "senha": senha, "email": email, "cnpj": cnpj, "cep": cep.value, "bairro": bairro, "cidade": cidade, "endereco": endereco, "estado": estado
     })
   })
     .then(response => {

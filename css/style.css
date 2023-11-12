@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 * {
     margin: 0;
     padding: 0;
@@ -24,7 +25,7 @@
 body {
     height: 100vh;
     color: white;
-    background-image: linear-gradient(90deg, var(--botao), var(--telaFundo));
+    background-image: linear-gradient(90deg, var(--sobre), var(--telaFundo));
 }
 
 
@@ -46,9 +47,11 @@ header {
     width: 100%;
     position: relative;
 }
+
 header img {
     width: 5em;
 }
+
 header a {
     color: white;
 }
@@ -64,17 +67,25 @@ nav ul li a {
     font-size: 18px;
     white-space: nowrap;
     cursor: pointer;
+    font-weight: bolder;
 }
 
-main, .containerGeral {
+main,
+.containerGeral {
     min-width: 300px;
-    background-image: linear-gradient(90deg, var(--botao), var(--telaFundo));
+    background-image: linear-gradient(90deg, var(--sobre), var(--telaFundo));
     margin: auto;
     width: 100%;
 }
-.containerGeral{
+
+section {
+    margin: 60px auto !important;
+}
+
+.containerGeral {
     background-image: linear-gradient(270deg, var(--botao), var(--telaFundo));
 }
+
 a:hover {
     opacity: 0.3;
     text-decoration: underline;
@@ -107,6 +118,7 @@ img {
 
 /* Principal */
 .container {
+    position: relative;
     background: linear-gradient(90deg, var(--sobre), var(--telaFundo)) !important;
     display: flex;
     justify-content: center;
@@ -116,9 +128,27 @@ img {
 }
 
 .container h1 {
+    position: relative;
+    z-index: 1;
     max-width: 316px;
     letter-spacing: 0em;
     font-size: 4em;
+}
+
+.container div>img {
+    position: relative;
+}
+
+.faixa {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    top: 70px;
+    width: 100%;
+    height: 30px;
+    padding: 40px;
+    background-color: var(--telaFundo);
+    z-index: 0;
 }
 
 .container p {
@@ -128,7 +158,7 @@ img {
 
 /* disponibilidade da empresa */
 .disponivel {
-    background: linear-gradient(90deg, var(--sobre), var(--telaFundo)) !important;
+    background-image: linear-gradient(90deg, var(--sobre), var(--telaFundo)) !important;
 }
 
 /* Pagina sobre a empresa */
@@ -139,7 +169,7 @@ img {
     align-items: center;
     flex-direction: column;
     text-align: center;
-    background: linear-gradient(270deg, var(--telaFundo), var(--sobre));
+    background-image: linear-gradient(90deg, var(--sobre), var(--telaFundo))
 }
 
 .sobre h1 {
@@ -171,7 +201,7 @@ img {
 /* agendamento */
 
 .agendamento {
-    background: linear-gradient(90deg, var(--telaFundo), var(--sobre));
+    background-image: linear-gradient(90deg, var(--sobre), var(--telaFundo));
     display: flex;
     justify-content: center;
     align-items: center;
@@ -193,7 +223,7 @@ img {
 
 /* depoimento */
 .containerDepoimento {
-    background: no-repeat fixed url('../img/celular_agenda_2.png') center center ;
+    background: no-repeat fixed url('../img/celular_agenda_2.png') center center;
     background-size: cover;
     width: 100%;
     background-color: var(--diversos);
@@ -247,37 +277,45 @@ footer>div {
     flex-direction: row;
 
 }
-.containerSocial{
+
+.containerSocial {
     display: block;
     max-width: 500px;
     width: 100%;
     margin: auto;
 }
-.contatos{
+
+.contatos {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
 }
 
-.contatos p{
+.contatos p {
     width: 50%;
     padding: 10px;
     text-align: justify;
 }
-.fa-envelope, .fa-whatsapp, .fa-phone {
+
+.fa-envelope,
+.fa-whatsapp,
+.fa-phone {
     max-width: 50px;
     width: 50%;
     padding: 10px;
 }
+
 footer div i {
     font-size: 20px;
 }
 
-footer img{
+footer img {
     width: 15em;
 }
 
-.fa-envelope:hover, .fa-whatsapp:hover, .fa-phone:hover  {
+.fa-envelope:hover,
+.fa-whatsapp:hover,
+.fa-phone:hover {
     transition: transform 0.3s, opacity 0.3s;
     cursor: pointer;
     transform: scale(1.3);

@@ -31,20 +31,20 @@
                 <label for="empresa">Sou Empresa</label>
             </fieldset>
         </section>
-        <div class="containerForm">
+        <div class="containerForm" id="formularios">
             <!-- Cadastrar usuario cliente -->
             <form method="post" class="formCadastro" id="formCliente">
                 <h1>Cadastrar Cliente</h1>
                 <label for="nome">Nome</label>
-                <input type="text" name="nome" id="nome" placeholder="Seu nome completo">
+                <input type="text" name="nome" placeholder="Seu nome completo">
                 <label for="senha">Senha</label>
-                <input type="password" name="senha" id="senha" placeholder="Senha no máximo 10 caracteres">
+                <input type="password" name="senha" placeholder="Senha no máximo 10 caracteres">
                 <label for="repetirSenha">Repetir a senha</label>
-                <input type="password" name="repetirSenha" id="repetirSenha" placeholder="Digite a sua senha novamente">
+                <input type="password" name="repetirSenha" placeholder="Digite a sua senha novamente">
                 <label for="email">Email</label>
-                <input type="email" name="email" id="email" placeholder="seuemail@exemplo.com">
+                <input type="email" name="email" placeholder="seuemail@exemplo.com">
                 <label for="cep">CEP</label>
-                <input type="number" name="cep" id="cep" maxlength="8" placeholder="Digite apenas números">
+                <input type="number" name="cep" maxlength="8" placeholder="Digite apenas números" id="cepCliente">
                 <div class="containerNovosElementos" style="text-align: center;"></div>
                 <button type="submit" style="margin-top: 20px;">Enviar</button>
             </form>
@@ -52,17 +52,17 @@
             <form method="post" class="formCadastro" id="formEmpresa">
                 <h1>Cadastrar Empresa</h1>
                 <label for="nome">Nome</label>
-                <input type="text" name="nome" id="nome" placeholder="Seu nome completo">
+                <input type="text" name="nome" placeholder="Seu nome completo">
                 <label for="empresa">Nome da Empresa</label>
-                <input type="text" name="empresa" id="empresa" placeholder="O nome da sua empresa">
+                <input type="text" name="empresa" placeholder="O nome da sua empresa">
                 <label for="senha">Senha</label>
-                <input type="password" name="senha" id="senha" placeholder="Senha no máximo 10 caracteres">
+                <input type="password" name="senha" placeholder="Senha no máximo 10 caracteres">
                 <label for="repetirSenha">Repetir a senha</label>
-                <input type="password" name="repetirSenha" id="repetirSenha" placeholder="Digite a sua novamente">
+                <input type="password" name="repetirSenha" placeholder="Digite a sua novamente">
                 <label for="email">Email</label>
-                <input type="email" name="email" id="email" placeholder="seuemail@exemplo.com">
+                <input type="email" name="email" placeholder="seuemail@exemplo.com">
                 <label for="cep">CEP</label>
-                <input type="number" name="cep" id="cep" maxlength="8" placeholder="Digite apenas números">
+                <input type="number" name="cep" maxlength="8" placeholder="Digite apenas números" id="cepEmpresa">
                 <div class="containerNovosElementos" style="text-align: center;"></div>
                 <button type="submit" style="margin-top: 20px;">Enviar</button>
             </form>
