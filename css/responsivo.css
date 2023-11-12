@@ -1,5 +1,4 @@
 @charset "UTF-8";
-
 #hamb {
     display: none;
     cursor: pointer;
@@ -18,7 +17,9 @@
         opacity: 0.9;
         position: absolute;
     }
-
+    nav span{
+        display: none;
+    }
     nav li {
         display: flex;
         justify-content: center;
@@ -73,10 +74,14 @@
     .container img {
         width: 100%;
     }
+    footer img{
+        width: 12em;
+    }
 }
 
 @media all and (min-width: 1200px){
     section{
         margin: 30px auto;
+        background-image: linear-gradient(45deg, var(--botao), var(--telaFundo));
     }
 }

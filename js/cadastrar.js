@@ -1,10 +1,24 @@
-const form = document.querySelector('form');
+const botaoRadio = document.getElementsByName('opcao')
+const formularioCliente = document.getElementById('formCliente')
+const formularioEmpresa = document.getElementById('formEmpresa')
+botaoRadio.forEach(botao => {
+  botao.addEventListener("click", () => {
+      if (botao.id === 'empresa') {
+        formularioCliente.style.display = 'none'
+        formularioEmpresa.style.display = "flex"
+      } if (botao.id === 'cliente') {
+        formularioEmpresa.style.display = "none"
+        formularioCliente.style.display = 'flex'
+      }
+  })
+})
+// const form = document.getElementById('formularioCliente');
 let cepValido = false
 
 const cep = document.getElementById('cep');
 let labelBairro, labelCidade, labelEndereco, labelEstado, inputBairro, inputCidade, inputEndereco, inputEstado, bairro, estado, cidade, endereco;
 
-
+// Api do cep
 cep.addEventListener('input', () => {
   let containerNovosElementos = document.querySelector('.containerNovosElementos')
   cep.value = cep.value.replace(/-/g, '');
@@ -102,7 +116,7 @@ cep.addEventListener('input', () => {
     })
   }
 })
-
+// Formulario de cadastrar usuario cliente
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   const nome = form.nome.value;
@@ -142,7 +156,7 @@ form.addEventListener("submit", (event) => {
       if (!response.ok) {
         throw new Error('Erro na solicitação. Status: ' + response.status);
       }
-      document.location.href="./login.html"
+      document.location.href = "./login.html"
       return response.json();
     })
     .catch(err => console.error("Erro:", err))

@@ -1,5 +1,4 @@
 @charset "UTF-8";
-
 * {
     margin: 0;
     padding: 0;
@@ -11,10 +10,11 @@
 /* Paleta de cores */
 :root {
     /* cores */
-    --telaFundo: #0e4377;
-    --botao: #5271ff;
-    --autor: #bb8de6;
-    --sobre: #56a3f0;
+    --telaFundo: #001a88;
+    --diversos: #0d299b;
+    --autor: #1b37ae;
+    --sobre: #2846c0;
+    --botao: #3554d3;
     /* fontes */
     --tituloH1: url("fonts/AveriaSerifLibre-Bold.ttf");
     --paragrafo: url('fonts/Fahkwang/Fahkwang-Medium.ttf');
@@ -24,7 +24,7 @@
 body {
     height: 100vh;
     color: white;
-    background-color: black;
+    background-image: linear-gradient(90deg, var(--botao), var(--telaFundo));
 }
 
 
@@ -68,12 +68,12 @@ nav ul li a {
 
 main, .containerGeral {
     min-width: 300px;
-    background-color: #000;
+    background-image: linear-gradient(90deg, var(--botao), var(--telaFundo));
     margin: auto;
     width: 100%;
 }
 .containerGeral{
-    background-image: linear-gradient(45deg, var(--botao), var(--telaFundo));
+    background-image: linear-gradient(270deg, var(--botao), var(--telaFundo));
 }
 a:hover {
     opacity: 0.3;
@@ -107,6 +107,7 @@ img {
 
 /* Principal */
 .container {
+    background: linear-gradient(90deg, var(--sobre), var(--telaFundo)) !important;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -138,6 +139,7 @@ img {
     align-items: center;
     flex-direction: column;
     text-align: center;
+    background: linear-gradient(270deg, var(--telaFundo), var(--sobre));
 }
 
 .sobre h1 {
@@ -169,7 +171,7 @@ img {
 /* agendamento */
 
 .agendamento {
-    background: linear-gradient(270deg, var(--telaFundo), black);
+    background: linear-gradient(90deg, var(--telaFundo), var(--sobre));
     display: flex;
     justify-content: center;
     align-items: center;
@@ -180,6 +182,7 @@ img {
 .agendamento img {
     margin-top: 20px;
     width: 20em;
+    border-radius: 20px;
 }
 
 .agendamento button {
@@ -193,7 +196,7 @@ img {
     background: no-repeat fixed url('../img/celular_agenda_2.png') center center ;
     background-size: cover;
     width: 100%;
-    background-color: var(--telaFundo);
+    background-color: var(--diversos);
 }
 
 .depoimento {
@@ -226,7 +229,7 @@ img {
 
 /* footer */
 footer {
-    background-color: black;
+    background-color: var(--telaFundo);
     text-align: center;
     color: white;
     display: flex;
@@ -271,7 +274,7 @@ footer div i {
 }
 
 footer img{
-    width: 20em;
+    width: 15em;
 }
 
 .fa-envelope:hover, .fa-whatsapp:hover, .fa-phone:hover  {
@@ -282,13 +285,13 @@ footer img{
 }
 
 .fa-envelope {
-    color: red;
+    color: #910d0d;
 }
 
 .fa-whatsapp {
-    color: green;
+    color: #7eed7e;
 }
 
 .fa-phone {
-    color: blue;
+    color: rgb(7, 7, 99);
 }

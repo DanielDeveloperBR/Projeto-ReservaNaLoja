@@ -30,7 +30,7 @@ form.addEventListener("submit", async (e) => {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ "nome": login, "senha": senha })
+            body: JSON.stringify({ "email": login, "senha": senha })
         });
 
         if (response.ok) {

@@ -1,31 +1,100 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="fontawesome-free-6.4.2-web/css/all.css">
+    <link rel="stylesheet" href="css/responsivo.css">
     <link rel="stylesheet" href="css/formulario.css">
     <title>Cadastrar</title>
 </head>
 
 <body>
-        <form method="post" class="formCadastro">
-            <h1>Cadastrar</h1>
-            <label for="nome">Nome</label>
-            <input type="text" name="nome" id="nome">
-            <label for="senha">Senha</label>
-            <input type="password" name="senha" id="senha">
-            <label for="repetirSenha">Repetir a senha</label>
-            <input type="password" name="repetirSenha" id="repetirSenha">
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email">
-            <label for="cep">Cep</label>
-            <input type="number" name="cep" id="cep" maxlength="8">
-            <div class="containerNovosElementos" style="text-align: center;"></div>
-            <button type="submit" style="margin-top: 20px;">Enviar</button>
-            <a href="index.html">Voltar</a>
-        </form>
+    <header>
+        <a href="index.html"><img src="img/logo.png" alt="logo"></a>
+        <span id="hamb"><i class="fa-solid fa-bars"></i></span>
+        <nav>
+            <ul>
+                <li><span>Já tem conta?</span><a href="login.html">login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="containerGeral">
+        <section class="agendamento">
+            <h1>Criar uma conta</h1>
+            <fieldset>
+                <input type="radio" name="opcao" id="cliente" checked>
+                <label for="cliente">Sou Cliente</label>
+                <input type="radio" name="opcao" id="empresa">
+                <label for="empresa">Sou Empresa</label>
+            </fieldset>
+        </section>
+        <div class="containerForm">
+            <!-- Cadastrar usuario cliente -->
+            <form method="post" class="formCadastro" id="formCliente">
+                <h1>Cadastrar Cliente</h1>
+                <label for="nome">Nome</label>
+                <input type="text" name="nome" id="nome" placeholder="Seu nome completo">
+                <label for="senha">Senha</label>
+                <input type="password" name="senha" id="senha" placeholder="Senha no máximo 10 caracteres">
+                <label for="repetirSenha">Repetir a senha</label>
+                <input type="password" name="repetirSenha" id="repetirSenha" placeholder="Digite a sua senha novamente">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="seuemail@exemplo.com">
+                <label for="cep">CEP</label>
+                <input type="number" name="cep" id="cep" maxlength="8" placeholder="Digite apenas números">
+                <div class="containerNovosElementos" style="text-align: center;"></div>
+                <button type="submit" style="margin-top: 20px;">Enviar</button>
+            </form>
+            <!-- Cadastrar usuario Empresa -->
+            <form method="post" class="formCadastro" id="formEmpresa">
+                <h1>Cadastrar Empresa</h1>
+                <label for="nome">Nome</label>
+                <input type="text" name="nome" id="nome" placeholder="Seu nome completo">
+                <label for="empresa">Nome da Empresa</label>
+                <input type="text" name="empresa" id="empresa" placeholder="O nome da sua empresa">
+                <label for="senha">Senha</label>
+                <input type="password" name="senha" id="senha" placeholder="Senha no máximo 10 caracteres">
+                <label for="repetirSenha">Repetir a senha</label>
+                <input type="password" name="repetirSenha" id="repetirSenha" placeholder="Digite a sua novamente">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="seuemail@exemplo.com">
+                <label for="cep">CEP</label>
+                <input type="number" name="cep" id="cep" maxlength="8" placeholder="Digite apenas números">
+                <div class="containerNovosElementos" style="text-align: center;"></div>
+                <button type="submit" style="margin-top: 20px;">Enviar</button>
+            </form>
+        </div>
+    </div>
+    <footer>
+        <h1>Fale conosco</h1>
+        <div class="containerSocial">
+            <div class="contatos">
+
+                <p>(21) 96778-2777</p>
+                <i class="fa-brands fa-whatsapp social"></i>
+
+            </div>
+            <div class="contatos">
+                <p>(21) 96778-2777</p>
+                <i class="fa-solid fa-phone social"></i>
+            </div>
+            <div class="contatos">
+                <p>danieldetrabalho1@gmail.com</p>
+                <i class="fa-regular fa-envelope social"></i>
+            </div>
+        </div>
+
+        <div><img src="img/agenda-footer.png" alt="">
+        </div>
+        <p>&copy; Todos os direitos reservados</p>
+    </footer>
+    <script defer src="fontawesome-free-6.4.2-web/js/all.js"></script>
+    <script src="js/responsivo.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="js/cadastrar.js"></script>
 </body>
+
 </html>

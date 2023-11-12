@@ -1,12 +1,23 @@
-body {
+@charset "UTF-8";
+
+.bodyForm {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(to right, var(--botao), var(--telaFundo));
+    background: linear-gradient(90deg, var(--botao), var(--telaFundo));
 }
 
 
-.containerForm {
+.formCadastrar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+
+.containerLogin {
     border-radius: 10px;
     min-width: 300px;
     max-width: 1200px;
@@ -19,7 +30,7 @@ body {
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.445);
 }
 
-.cadastro {
+.imgLogin {
     width: 100%;
     height: 500px;
     background-image: url('../img/grafico\ -\ Agenda.png');
@@ -33,7 +44,7 @@ body {
 
 }
 
-.cadastro p {
+.imgLogin p {
     font-size: 20px;
     color: black;
 }
@@ -62,14 +73,9 @@ body {
 form h1 {
     margin: 0;
     margin-bottom: 10px;
-    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.445);
-    padding: 4px;
     border-radius: 10px;
-}
-
-form a{
-    color: #ffffff6e;
-    text-decoration: underline;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.445);
+    text-align: center;
 }
 
 form button {
@@ -103,24 +109,86 @@ form label {
     color: var(--botao);
 }
 
-form input:focus{
+form input:focus {
     background-color: var(--telaFundo);
     outline: 0.15em solid blue;
     box-shadow: 2px 2px 3px #00000027;
     color: white;
     font-weight: 500;
 }
-form input:focus::placeholder{
+
+form input:focus::placeholder {
     color: #ffffff80;
 }
 
-@media all and (max-width: 615px) {
-    .cadastro {
+/* Container dos formularios de cadastrar cliente e empresa */
+.containerForm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+    max-width: 600px;
+    width: 100%;
+    margin: auto;
+}
+input[type="radio"]{
+    margin-left: 10px;
+}
+
+section fieldset {
+    border: none;
+    margin-bottom: 20px;
+}
+
+/* Formulario de cadastrar empresa */
+#formEmpresa {
+    display: none;
+    animation: Empresa 0.5s ease-out;
+}
+
+#formCliente {
+    animation: Cliente 0.5s ease-out;
+
+}
+
+@keyframes Cliente {
+    0% {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes Empresa {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+#formCliente,
+#formEmpresa {
+    margin: 20px auto;
+}
+
+/* responsividade do login */
+@media all and (max-width: 665px) {
+    .imgLogin {
         display: none;
     }
 
-    .containerForm {
-        width: 80%;
+    .containerLogin {
+        width: 50%;
         background-image: linear-gradient(267deg, black, transparent);
+        white-space: nowrap;
     }
 }
