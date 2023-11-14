@@ -23,41 +23,51 @@ botaoRadio.forEach(botao => {
 // Api do cep
 function eventoCep() {
   cepAtual.addEventListener('input', async () => {
-    // Remover formatação do CEP e garantir que tem exatamente 8 dígitos
+    const cep = cepAtual.value.trim();
+    if (cep === "") {
+      alert("Digite um CEP válido.")
+    }
+
     cepAtual.value = cepAtual.value.replace(/-/g, '');
     if (cepAtual.value.length > 8) {
       resetarCampos();
       return;
     }
 
-    const response = await fetch(`https://viacep.com.br/ws/${cepAtual.value}/json/`);
-    const result = await response.json();
-    if (response) {
-      console.log("foi")
-    } else {
-      console.log("fetch nao pegou")
-      console.log("status " + response.status)
+    if (!validarCep(cep)) {
+      return;
     }
-    console.log("O resultado: " + result)
 
-    if (response.ok && !result.erro) {
-      if (cepAtual === cepCliente) {
-        preencherCampos(result, formularios.querySelector('#formCliente'));
-      } else if (cepAtual === cepEmpresa) {
-        preencherCampos(result, formularios.querySelector('#formEmpresa'));
-      } else {
-        resetarCampos();
-        if (result.erro) {
-          mostrarMensagem('CEP não encontrado');
-        } else {
-          mostrarMensagem('Erro ao buscar CEP');
+    $.ajax({
+      url: `https://viacep.com.br/ws/${cep}/json/`, success: function (result) {
+        if (!result.erro) {
+          if (cepAtual === cepCliente) {
+            preencherCampos(result, formularios.querySelector('#formCliente'));
+          } else if (cepAtual === cepEmpresa) {
+            preencherCampos(result, formularios.querySelector('#formEmpresa'));
+          } else {
+            resetarCampos();
+            if (result.erro) {
+              mostrarMensagem('CEP não encontrado');
+            } else {
+              mostrarMensagem('Erro ao buscar CEP');
+            }
+          }
         }
       }
-    }
+    })
   })
 }
 
-// Resetar o campo do input do CEP
+function validarCep(cep) {
+  if (cep.length !== 8 || !/^\d+$/.test(cep)) {
+    alert("Digite um CEP válido.");
+    return false;
+  }
+
+  return true;
+}
+
 function resetarCampos() {
   if (cepAtual === cepCliente) {
     const containerNovosElementosCliente = document.querySelector('.containerNovosElementosCliente');
@@ -70,126 +80,65 @@ function resetarCampos() {
   cepValido = false;
 }
 
-// Preechendo os compos dinamicamente usando as class dos containers dos cep
 function preencherCampos(result, formularioAtual) {
   const containerNovosElementosEmpresa = formularioAtual.querySelector('.containerNovosElementosEmpresa');
   const containerNovosElementosCliente = formularioAtual.querySelector('.containerNovosElementosCliente');
-  if (cepAtual == cepEmpresa) {
-    containerNovosElementosEmpresa.classList.add('containerNovosElementosEmpresa');
-  } else if (cepAtual == cepCliente) {
-    containerNovosElementosCliente.classList.add('containerNovosElementosCliente');
+
+  if (cepAtual.value === cepEmpresa.value) {
+    formularioAtual = containerNovosElementosEmpresa
+  } else if (cepAtual.value == cepCliente.value) {
+    formularioAtual = containerNovosElementosCliente
   }
 
-  criarInput('Bairro', result.bairro);
-  criarInput('Cidade', result.localidade);
-  criarInput('Endereço', result.logradouro);
-  criarInput('Estado', result.uf);
+  criarInput(formularioAtual, 'Bairro', result.bairro, 'bairro');
+  criarInput(formularioAtual, 'Cidade', result.localidade, 'cidade');
+  criarInput(formularioAtual, 'Endereco', result.logradouro, 'endereco');
+  criarInput(formularioAtual, 'Estado', result.uf, 'estado')
 
-  // Atualizado para usar a variável cepAtual
   result.cepAtual = cepAtual.value;
 
   cepValido = true;
 }
 
+function criarInput(formulario, labelText, inputValue, nomeInput) {
+  const label = document.createElement('label');
 
-// Criar inputs e labels dinamicamente
-function criarInput(labelText, inputValue) {
-  if (cepAtual === cepCliente) {
-    const containerNovosElementosCliente = document.querySelector('.containerNovosElementosCliente');
-    const label = document.createElement('label');
-    label.innerHTML = labelText;
-    containerNovosElementosCliente.appendChild(label);
+  label.innerHTML = labelText;
+  label.for = nomeInput
+  formulario.appendChild(label);
 
-    const input = document.createElement('input');
-    input.value = inputValue;
-    input.classList.add('cep-info');
-    input.readOnly = true;
-    containerNovosElementosCliente.appendChild(input);
-  } else if (cepAtual === cepEmpresa) {
-    const containerNovosElementosEmpresa = document.querySelector('.containerNovosElementosEmpresa');
-    const label = document.createElement('label');
-    label.innerHTML = labelText;
-    containerNovosElementosEmpresa.appendChild(label);
-
-    const input = document.createElement('input');
-    input.value = inputValue;
-    input.classList.add('cep-info');
-    input.readOnly = true;
-    containerNovosElementosEmpresa.appendChild(input);
-  }
-  console.log("inputs criados dinamicamte")
-
+  const input = document.createElement('input');
+  input.name = nomeInput
+  input.value = inputValue;
+  input.classList.add('cep-info');
+  input.readOnly = true;
+  formulario.appendChild(input);
 }
 
-// Mensagem de erro
 function mostrarMensagem(mensagem) {
-  // Implemente a lógica para mostrar a mensagem na interface (pode ser um alert, uma div na página, etc.)
-  console.log("que mensagem? " + mensagem);
+  console.log("erro no cep? " + mensagem);
 }
 
-// Rodando a api do cep
 eventoCep()
-
-// Pegar os dados do formulario => formulario.exemplo
-function formularioDados(formulario, nome) {
-  return formulario[nome];
-}
-
-// Enviar dados do body: JSON.stringify
-function enviarDados(nome, dado) {
-  const resultado = { [nome]: dado };
-  return resultado;
-}
-
-// Pega todos os dados do formulario.exemplo e pega todos os dados para enviar no body: JSON.stringify
-function todosDados(formulario, campos) {
-  const dados = {};
-
-  campos.forEach(nome => {
-    const dado = formularioDados(formulario, nome);
-    dados[nome] = dado
-  });
-
-  return dados;
-}
-// Enviar para o banco de dados e backend
-function realizarEnvioDados(rota, formulario, campos) {
-  const dadosParaEnviar = todosDados(formulario, campos);
-  console.log(dadosParaEnviar)
-
-  fetch(`http://localhost:3000/${rota}`, {
-    method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(dadosParaEnviar),
-  })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Erro na solicitação. Status: ' + response.status);
-      }
-      document.location.href = "./login.html";
-      return response.json();
-    })
-    .catch(err => console.error("Erro:", err));
-}
 
 // Cadastrar a empresa
 formularios.querySelector('#formEmpresa').addEventListener("submit", (event) => {
   event.preventDefault();
   const formularioEmpresa = formularios.querySelector('#formEmpresa')
-
   const nome = formularioEmpresa.nome.value;
   const empresa = formularioEmpresa.empresa.value;
   const senha = formularioEmpresa.senha.value;
   const repetirSenha = formularioEmpresa.repetirSenha.value;
   const email = formularioEmpresa.email.value;
-  const cep = formularios.querySelector('#cepEmpresa').value;
+  const cep = formularios.querySelector('#cepEmpresa')
   const cnpj = formularioEmpresa.cnpj.value;
+  const bairro = formularioEmpresa.bairro.value;
+  const cidade = formularioEmpresa.cidade.value;
+  const endereco = formularioEmpresa.endereco.value;
+  const estado = formularioEmpresa.estado.value;
 
 
-  if (nome.trim() === "" || senha.trim() === "" || email.trim() === "" || cep.trim() === "" || !cepValido || cnpj === "" || empresa === "") {
+  if (nome.trim() === "" || senha.trim() === "" || email.trim() === "" || cep.value.trim() === "" || !cepValido || cnpj === "" || empresa === "") {
     alert("Preencha todos os campos");
     return;
   }
@@ -204,22 +153,42 @@ formularios.querySelector('#formEmpresa').addEventListener("submit", (event) => 
     return;
   }
 
-  const camposParaEnviar = ["nome", "empresa", "senha", "email", "cnpj", "cep", "bairro", "cidade", "endereco", "estado"];
-  realizarEnvioDados("empresa", formularioEmpresa, camposParaEnviar);
+  fetch('http://localhost:3000/empresa', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      "nome": nome, "empresa": empresa, "senha": senha, "email": email, "cnpj": cnpj, "cep": cep.value, "bairro": bairro, "cidade": cidade, "endereco": endereco, "estado": estado
+    })
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Erro na solicitação. Status: ' + response.status);
+      }
+      document.location.href = "./login.html"
+      return response.json();
+    })
+    .catch(err => console.error("Erro:", err))
+
 })
 
 // Cadastrar o cliente
 formularios.querySelector('#formCliente').addEventListener("submit", (event) => {
   event.preventDefault();
-
   const formularioCliente = formularios.querySelector('#formCliente');
   const nome = formularioCliente.nome.value;
   const senha = formularioCliente.senha.value;
   const repetirSenha = formularioCliente.repetirSenha.value;
   const email = formularioCliente.email.value;
-  const cep = formularioCliente.cep.value;
+  const cep = formularios.querySelector('#cepCliente')
+  const bairro = formularioCliente.bairro.value;
+  const cidade = formularioCliente.cidade.value;
+  const endereco = formularioCliente.endereco.value;
+  const estado = formularioCliente.estado.value;
 
-  if (nome.trim() === "" || senha.trim() === "" || email.trim() === "" || cep.trim() === "" || !cepValido) {
+  if (nome.trim() === "" || senha.trim() === "" || email.trim() === "" || cep.value.trim() === "" || !cepValido) {
     alert("Preencha todos os campos");
     console.log("preencha todos os campos")
     return;
@@ -234,7 +203,22 @@ formularios.querySelector('#formCliente').addEventListener("submit", (event) => 
     alert("As senhas não são iguais.");
     return;
   }
-
-  const camposParaEnviar = ["nome", "senha", "email", "cep", "bairro", "cidade", "endereco", "estado"];
-  realizarEnvioDados("usuario", formularioCliente, camposParaEnviar);
+  fetch('http://localhost:3000/usuario', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      "nome": nome, "senha": senha, "email": email, "cep": cep.value, "bairro": bairro, "cidade": cidade, "endereco": endereco, "estado": estado
+    })
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Erro na solicitação. Status: ' + response.status);
+      }
+      document.location.href = "./login.html"
+      return response.json();
+    })
+    .catch(err => console.error("Erro:", err))
 })
