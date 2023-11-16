@@ -28,13 +28,11 @@ try {
 
     if (response.ok) {
         const data = await response.text();
-        console.log("Login realizado com sucesso:", data);
-        
         // Redireciona para a rota do dashboard
         window.location.href = 'http://localhost:3000/dashboard';
     } else {
         const data = await response.json();
-        console.error("Erro ao fazer login:", data);
+        alert("Login ou senha incorretos!")
     }
 } catch (error) {
     console.error('Erro ao fazer login:', error);
