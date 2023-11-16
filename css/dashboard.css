@@ -1,7 +1,6 @@
 @charset "UTF-8";
 .agenda {
     flex-direction: column;
-    background-color: #f0f0f0;
     padding: 20px;
     border-radius: 10px;
     text-align: center;
@@ -28,4 +27,7 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+.agenda label{
+    font-weight: bolder;
 }

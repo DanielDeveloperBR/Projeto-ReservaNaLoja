@@ -30,6 +30,11 @@
     border: 1px solid rgb(255, 255, 255);
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.445);
     margin: 20px auto;
+    background-color: var(--diversos);
+    color: white;
+}
+.agendamento{
+    margin-bottom: 0px;
 }
 
 .imgLogin {
@@ -135,7 +140,7 @@ input[type="radio"]{
     margin-left: 10px;
 }
 
-section fieldset {
+fieldset {
     border: none;
     margin-bottom: 20px;
 }

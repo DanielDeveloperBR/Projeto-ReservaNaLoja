@@ -35,6 +35,7 @@
 
     #hamb {
         display: block;
+        color: white;
     }
 
     main {
@@ -79,12 +80,5 @@
     }
     footer img{
         width: 12em;
-    }
-}
-
-@media all and (min-width: 1200px){
-    section{
-        margin: 30px auto;
-        background: linear-gradient(90deg, var(--sobre), var(--telaFundo))
     }
 }
