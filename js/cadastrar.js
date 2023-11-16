@@ -1,73 +1,63 @@
-const botaoRadio = document.getElementsByName('opcao')
-const formularios = document.getElementById('formularios')
+const botaoRadio = document.getElementsByName('opcao');
+const formularios = document.getElementById('formularios');
 let cepCliente = document.querySelector('#cepCliente');
 let cepEmpresa = document.querySelector('#cepEmpresa');
 let cepAtual = cepCliente;
+let cepValido = false;
 
 // Evento do radio
 botaoRadio.forEach(botao => {
   botao.addEventListener("click", () => {
     if (botao.id === 'empresa') {
-      formularios.querySelector('#formCliente').style.display = 'none'
-      formularios.querySelector('#formEmpresa').style.display = "flex"
-      cepAtual = cepEmpresa
-    } if (botao.id === 'cliente') {
-      formularios.querySelector('#formEmpresa').style.display = "none"
-      formularios.querySelector('#formCliente').style.display = 'flex'
-      cepAtual = cepCliente
+      formularios.querySelector('#formCliente').style.display = 'none';
+      formularios.querySelector('#formEmpresa').style.display = "flex";
+      cepAtual = cepEmpresa;
+    } else if (botao.id === 'cliente') {
+      formularios.querySelector('#formEmpresa').style.display = "none";
+      formularios.querySelector('#formCliente').style.display = 'flex';
+      cepAtual = cepCliente;
     }
-    eventoCep()
-  })
-})
+    eventoCep();
+  });
+});
 
 // Api do cep
 function eventoCep() {
   cepAtual.addEventListener('input', async () => {
     const cep = cepAtual.value.trim();
-    if (cep === "") {
-      alert("Digite um CEP válido.")
-    }
-
     cepAtual.value = cepAtual.value.replace(/-/g, '');
-    if (cepAtual.value.length > 8) {
+    if (cep.length !== 8) {
+      return;
+    }
+    if (cep.length > 8) {
       resetarCampos();
       return;
     }
-
-    if (!validarCep(cep)) {
-      return;
-    }
-
-    $.ajax({
-      url: `https://viacep.com.br/ws/${cep}/json/`, success: function (result) {
-        if (!result.erro) {
-          if (cepAtual === cepCliente) {
-            preencherCampos(result, formularios.querySelector('#formCliente'));
-          } else if (cepAtual === cepEmpresa) {
-            preencherCampos(result, formularios.querySelector('#formEmpresa'));
-          } else {
-            resetarCampos();
-            if (result.erro) {
-              mostrarMensagem('CEP não encontrado');
-            } else {
-              mostrarMensagem('Erro ao buscar CEP');
-            }
-          }
-        }
+    try {
+      const response = await fetch(`http://localhost:3000/cep/${cep}/`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      if (!response.ok) {
+        throw new Error('Erro na solicitação. Status: ' + response.status);
       }
-    })
-  })
+      const result = await response.json();
+      if (cepAtual.value == cepCliente.value) {
+        preencherCampos(result, formularios.querySelector('#formCliente'));
+      } else if (cepAtual.value == cepEmpresa.value) {
+        preencherCampos(result, formularios.querySelector('#formEmpresa'));
+      } else if (result.erro) {
+        mostrarMensagem('CEP não encontrado');
+      }
+    } catch (error) {
+        resetarCampos();
+        mostrarMensagem('Erro ao buscar CEP');
+    }
+  });
 }
-
-function validarCep(cep) {
-  if (cep.length !== 8 || !/^\d+$/.test(cep)) {
-    alert("Digite um CEP válido.");
-    return false;
-  }
-
-  return true;
-}
-
+// resetar os campos
 function resetarCampos() {
   if (cepAtual === cepCliente) {
     const containerNovosElementosCliente = document.querySelector('.containerNovosElementosCliente');
@@ -79,7 +69,7 @@ function resetarCampos() {
   cepAtual.value = ""
   cepValido = false;
 }
-
+// preencher os campos dos inputs dinamicos
 function preencherCampos(result, formularioAtual) {
   const containerNovosElementosEmpresa = formularioAtual.querySelector('.containerNovosElementosEmpresa');
   const containerNovosElementosCliente = formularioAtual.querySelector('.containerNovosElementosCliente');
@@ -99,7 +89,7 @@ function preencherCampos(result, formularioAtual) {
 
   cepValido = true;
 }
-
+// Criar input dinamico
 function criarInput(formulario, labelText, inputValue, nomeInput) {
   const label = document.createElement('label');
 
@@ -114,13 +104,11 @@ function criarInput(formulario, labelText, inputValue, nomeInput) {
   input.readOnly = true;
   formulario.appendChild(input);
 }
-
+// Mostrar mensagem de erro
 function mostrarMensagem(mensagem) {
-  console.log("erro no cep? " + mensagem);
+  alert(mensagem)
 }
-
 eventoCep()
-
 // Cadastrar a empresa
 formularios.querySelector('#formEmpresa').addEventListener("submit", (event) => {
   event.preventDefault();
@@ -138,7 +126,11 @@ formularios.querySelector('#formEmpresa').addEventListener("submit", (event) => 
   const estado = formularioEmpresa.estado.value;
 
 
-  if (nome.trim() === "" || senha.trim() === "" || email.trim() === "" || cep.value.trim() === "" || !cepValido || cnpj === "" || empresa === "") {
+  if (!cepValido) {
+    mostrarMensagem('CEP inválido');
+    return;
+  }
+  if (nome.trim() === "" || senha.trim() === "" || email.trim() === "" || cep.value.trim() === "" || cnpj === "" || empresa === "" || cep.value.trim()) {
     alert("Preencha todos os campos");
     return;
   }
