@@ -3,31 +3,35 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: row;
-    margin: 20px 0;
+    /* flex-direction: row; */
   }
+  .primeiroContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
   
+  }
   .info {
     flex: 1;
     padding: 20px;
     text-align: left;
+
   
+  }
+  .info p{
+    max-width: 300px;
+
   }
   
   .image {
-    flex: 1;
-    padding: 20px;
-    width: 600px;
     max-width: 100%;
-  }
-  
-  .image img {
-    max-width: 100%;
+    width: 400px;
   }
   
   /* Adicione estilos adicionais de acordo com suas preferências */
   @media all and (max-width: 700px){
-    .content{
+   
+    .primeiroContainer{
       flex-direction: column;
     }
     .info{

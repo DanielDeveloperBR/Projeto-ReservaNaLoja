@@ -12,27 +12,31 @@ botaoRadio.forEach(botao => {
       formularios.querySelector('#formCliente').style.display = 'none';
       formularios.querySelector('#formEmpresa').style.display = "flex";
       cepAtual = cepEmpresa;
+      eventoCep(cepAtual);
     } else if (botao.id === 'cliente') {
       formularios.querySelector('#formEmpresa').style.display = "none";
       formularios.querySelector('#formCliente').style.display = 'flex';
       cepAtual = cepCliente;
+      eventoCep(cepAtual);
     }
-    eventoCep();
   });
 });
 
 // Api do cep
-function eventoCep() {
+function eventoCep(cepAtual) {
   cepAtual.addEventListener('input', async () => {
     const cep = cepAtual.value.trim();
     cepAtual.value = cepAtual.value.replace(/-/g, '');
+
+    if (cep.length > 8) {
+      resetarCampos(cepAtual);
+      return;
+    }
+
     if (cep.length !== 8) {
       return;
     }
-    if (cep.length > 8) {
-      resetarCampos();
-      return;
-    }
+
     try {
       const response = await fetch(`http://localhost:3000/cep/${cep}/`, {
         method: 'GET',
@@ -40,55 +44,64 @@ function eventoCep() {
           'Content-Type': 'application/json',
         },
       });
+
       if (!response.ok) {
         throw new Error('Erro na solicitação. Status: ' + response.status);
       }
+
       const result = await response.json();
-      if (cepAtual.value == cepCliente.value) {
-        preencherCampos(result, formularios.querySelector('#formCliente'));
-      } else if (cepAtual.value == cepEmpresa.value) {
-        preencherCampos(result, formularios.querySelector('#formEmpresa'));
+
+      if (cepAtual.id === 'cepCliente') {
+        preencherCampos(result, formularios.querySelector('#formCliente'), cepAtual);
+      } else if (cepAtual.id === 'cepEmpresa') {
+        preencherCampos(result, formularios.querySelector('#formEmpresa'), cepAtual);
       } else if (result.erro) {
         mostrarMensagem('CEP não encontrado');
       }
     } catch (error) {
-        resetarCampos();
-        mostrarMensagem('Erro ao buscar CEP');
+      resetarCampos(cepAtual);
+      mostrarMensagem('Erro ao buscar CEP');
     }
   });
 }
+
 // resetar os campos
-function resetarCampos() {
-  if (cepAtual === cepCliente) {
+function resetarCampos(cepAtual) {
+  if (cepAtual.id === 'cepCliente') {
     const containerNovosElementosCliente = document.querySelector('.containerNovosElementosCliente');
-    containerNovosElementosCliente.innerHTML = ""
-  } else if (cepAtual === cepEmpresa) {
+    containerNovosElementosCliente.innerHTML = "";
+  } else if (cepAtual.id === 'cepEmpresa') {
     const containerNovosElementosEmpresa = document.querySelector('.containerNovosElementosEmpresa');
-    containerNovosElementosEmpresa.innerHTML = ""
+    containerNovosElementosEmpresa.innerHTML = "";
   }
-  cepAtual.value = ""
+  cepAtual.value = "";
   cepValido = false;
 }
+
 // preencher os campos dos inputs dinamicos
-function preencherCampos(result, formularioAtual) {
+function preencherCampos(result, formularioAtual, cepAtual) {
+  if (cepValido) {
+    return;
+  }
+
   const containerNovosElementosEmpresa = formularioAtual.querySelector('.containerNovosElementosEmpresa');
   const containerNovosElementosCliente = formularioAtual.querySelector('.containerNovosElementosCliente');
 
-  if (cepAtual.value === cepEmpresa.value) {
-    formularioAtual = containerNovosElementosEmpresa
-  } else if (cepAtual.value == cepCliente.value) {
-    formularioAtual = containerNovosElementosCliente
+  if (cepAtual.id === 'cepEmpresa') {
+    formularioAtual = containerNovosElementosEmpresa;
+  } else if (cepAtual.id === 'cepCliente') {
+    formularioAtual = containerNovosElementosCliente;
   }
 
   criarInput(formularioAtual, 'Bairro', result.bairro, 'bairro');
   criarInput(formularioAtual, 'Cidade', result.localidade, 'cidade');
   criarInput(formularioAtual, 'Endereco', result.logradouro, 'endereco');
-  criarInput(formularioAtual, 'Estado', result.uf, 'estado')
+  criarInput(formularioAtual, 'Estado', result.uf, 'estado');
 
   result.cepAtual = cepAtual.value;
-
   cepValido = true;
 }
+
 // Criar input dinamico
 function criarInput(formulario, labelText, inputValue, nomeInput) {
   const label = document.createElement('label');
@@ -108,7 +121,6 @@ function criarInput(formulario, labelText, inputValue, nomeInput) {
 function mostrarMensagem(mensagem) {
   alert(mensagem)
 }
-eventoCep()
 // Cadastrar a empresa
 formularios.querySelector('#formEmpresa').addEventListener("submit", (event) => {
   event.preventDefault();
@@ -130,7 +142,7 @@ formularios.querySelector('#formEmpresa').addEventListener("submit", (event) => 
     mostrarMensagem('CEP inválido');
     return;
   }
-  if (nome.trim() === "" || senha.trim() === "" || email.trim() === "" || cep.value.trim() === "" || cnpj === "" || empresa === "" || cep.value.trim()) {
+  if (nome.trim() === "" || senha.trim() === "" || email.trim() === "" || cep.value.trim() === "" || cnpj === "" || empresa.trim() === "") {
     alert("Preencha todos os campos");
     return;
   }
@@ -214,3 +226,4 @@ formularios.querySelector('#formCliente').addEventListener("submit", (event) => 
     })
     .catch(err => console.error("Erro:", err))
 })
+eventoCep(cepAtual)
