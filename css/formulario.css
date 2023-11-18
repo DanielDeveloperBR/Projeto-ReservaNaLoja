@@ -16,7 +16,6 @@
 }
 
 
-
 .containerLogin {
     max-height: 600px;
     border-radius: 10px;
@@ -70,7 +69,11 @@
 .formCadastro {
     border: 1px solid white;
 }
-
+/* cor dos inputs desativados */
+input.cep-info {
+    background-color: #0000002b !important;
+    color: white;
+}
 .formLogin {
     height: 100%;
 }

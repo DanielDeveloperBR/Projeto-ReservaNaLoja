@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reserve na Loja</title>
+    <title>Agendamento Expresso</title>
     <link rel="stylesheet" href="css/style.css">
 
     <link rel="stylesheet" href="fontawesome-free-6.4.2-web/css/all.css">
@@ -22,8 +22,8 @@
             <h2>Geral</h2>
             <ul>
                 <li>
-                    <p class="question">1. O que é o [Nome do Seu Site]?</p>
-                    <p class="answer">[Sua resposta aqui]</p>
+                   <h4>1. O que é o Agendamento Expresso?</h4>
+                    <p class="answer">O Agendamento Expresso é uma plataforma online que facilita o agendamento de horários para clientes e empresas. Ele proporciona uma maneira eficiente e conveniente de evitar filas e economizar tempo, tanto para os clientes quanto para as empresas.</p>
                 </li>
                 <!-- Repita o padrão para outras perguntas gerais -->
             </ul>
@@ -33,8 +33,8 @@
             <h2>Para Empresas</h2>
             <ul>
                 <li>
-                    <p class="question">6. Como uma empresa pode se cadastrar no [Nome do Seu Site]?</p>
-                    <p class="answer">[Sua resposta aqui]</p>
+                    <h4>2. Como uma empresa pode se cadastrar no Agendamento Expresso?</h4>
+                    <p class="answer">Para cadastrar sua empresa no Agendamento Expresso, basta acessar a seção de cadastro no site. Preencha as informações solicitadas. Após a aprovação, sua empresa estará pronta para disponibilizar horários aos clientes.</p>
                 </li>
                 <!-- Repita o padrão para outras perguntas para empresas -->
             </ul>
@@ -44,8 +44,8 @@
             <h2>Para Clientes</h2>
             <ul>
                 <li>
-                    <p class="question">10. Como faço para reservar um horário em uma empresa no [Nome do Seu Site]?</p>
-                    <p class="answer">[Sua resposta aqui]</p>
+                   <h4>3. Como faço para reservar um horário em uma empresa no Agendamento Expresso?</h4>
+                    <p class="answer">Para reservar um horário, acesse o site do Agendamento Expresso e encontre a empresa desejada. . Selecione a data e horário disponíveis que melhor atendam às suas necessidades e conclua a reserva seguindo as instruções na plataforma.</p>
                 </li>
                 <!-- Repita o padrão para outras perguntas para clientes -->
             </ul>
@@ -55,8 +55,8 @@
             <h2>Questões Técnicas</h2>
             <ul>
                 <li>
-                    <p class="question">14. Qual é a tecnologia usada no [Nome do Seu Site]?</p>
-                    <p class="answer">[Sua resposta aqui]</p>
+                    <h4>4. Qual é a tecnologia usada no Agendamento Expresso?</h4>
+                    <p class="answer">O Agendamento Expresso utiliza tecnologias avançadas no backend para garantir uma experiência eficiente e segura. A plataforma emprega linguagens de programação modernas e práticas para fornecer um serviço confiável e ágil.</p>
                 </li>
                 <!-- Repita o padrão para outras perguntas técnicas -->
             </ul>
@@ -66,40 +66,31 @@
             <h2>Contato e Suporte</h2>
             <ul>
                 <li>
-                    <p class="question">16. Como posso entrar em contato com o suporte do [Nome do Seu Site]?</p>
-                    <p class="answer">[Sua resposta aqui]</p>
+                    <h4>5. Como posso entrar em contato com o suporte do Agendamento Expresso?</h4>
+                    <p class="answer">Para entrar em contato com o suporte do Agendamento Expresso, visite a parte de baixo do site. Lá, você encontrará opções de contato, como e-mail, telefone ou whatsapp, para obter assistência rápida e eficaz em qualquer dúvida ou problema que possa surgir durante o uso da plataforma.</p>
                 </li>
                 <!-- Repita o padrão para outras perguntas de suporte -->
             </ul>
         </div>
-        <div class="user-question">
-            <h2>Faça sua pergunta</h2>
-            <input type="text" id="user-question-input" placeholder="Digite sua pergunta aqui">
-            <button onclick="submitUserQuestion()">Enviar</button>
-        </div>
-
-        <div class="faq-section">
-            <h2>Questões Técnicas</h2>
-            <ul>
-                <li>
-                    <p class="question">14. Qual é a tecnologia usada no [Nome do Seu Site]?</p>
-                    <p class="answer">[Sua resposta aqui]</p>
-                </li>
-                <!-- Repita o padrão para outras perguntas técnicas -->
-            </ul>
-        </div>
-
-        <div class="faq-section">
-            <h2>Contato e Suporte</h2>
-            <ul>
-                <li>
-                    <p class="question">16. Como posso entrar em contato com o suporte do [Nome do Seu Site]?</p>
-                    <p class="answer">[Sua resposta aqui]</p>
-                </li>
-                <!-- Repita o padrão para outras perguntas de suporte -->
-            </ul>
-        </div>
-    </div>
+        <h2>Faça Sua Pergunta</h2>
+       <div class="disponivel">
+        <form action="/submit_form" method="post">
+          <label for="name">Digite seu nome:</label>
+          <input type="text" id="name" name="name" required>
+          
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+          
+          <label for="subject">Assunto da mensagem:</label>
+          <input type="text" id="subject" name="subject" required>
+          
+          <label for="message" class="mensagem">Mensagem:</label>
+          <textarea id="message" name="message" required></textarea>
+          
+          <button type="submit">Enviar</button>
+        </form>
+       </div>
+  
 
     <script>
         function submitUserQuestion() {

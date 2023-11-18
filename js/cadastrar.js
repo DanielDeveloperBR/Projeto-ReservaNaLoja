@@ -5,6 +5,11 @@ let cepEmpresa = document.querySelector('#cepEmpresa');
 let cepAtual = cepCliente;
 let cepValido = false;
 
+function validarSenha(senha) {
+  const regexSenha = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]).{8,}$/;
+  return regexSenha.test(senha);
+}
+
 // Evento do radio
 botaoRadio.forEach(botao => {
   botao.addEventListener("click", () => {
@@ -22,6 +27,10 @@ botaoRadio.forEach(botao => {
   });
 });
 
+function focar() {
+  const botao = document.querySelector('button')
+  botao.focus()
+}
 // Api do cep
 function eventoCep(cepAtual) {
   cepAtual.addEventListener('input', async () => {
@@ -58,6 +67,7 @@ function eventoCep(cepAtual) {
       } else if (result.erro) {
         mostrarMensagem('CEP não encontrado');
       }
+      focar()
     } catch (error) {
       resetarCampos(cepAtual);
       mostrarMensagem('Erro ao buscar CEP');
@@ -147,8 +157,8 @@ formularios.querySelector('#formEmpresa').addEventListener("submit", (event) => 
     return;
   }
 
-  if (senha.length < 8) {
-    alert("A senha precisa ter mais de 8 caracteres");
+  if (senha.length < 8 || !validarSenha(senha)) {
+    alert("A senha precisa ter mais de 8 caracteres, incluindo pelo menos uma letra maiúscula, uma letra minúscula e um símbolo");
     return;
   }
 
@@ -198,8 +208,8 @@ formularios.querySelector('#formCliente').addEventListener("submit", (event) => 
     return;
   }
 
-  if (senha.length < 8) {
-    alert("A senha precisa ter mais de 8 caracteres");
+  if (senha.length < 8 || !validarSenha(senha)) {
+    alert("A senha precisa ter mais de 8 caracteres, incluindo pelo menos uma letra maiúscula, uma letra minúscula e um símbolo");
     return;
   }
 
@@ -207,7 +217,7 @@ formularios.querySelector('#formCliente').addEventListener("submit", (event) => 
     alert("As senhas não são iguais.");
     return;
   }
-  fetch('http://localhost:3000/usuario', {
+  fetch('/usuario', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
