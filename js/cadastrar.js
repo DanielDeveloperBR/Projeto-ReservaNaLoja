@@ -28,8 +28,10 @@ botaoRadio.forEach(botao => {
 });
 
 function focar() {
-  const botao = document.querySelector('button')
-  botao.focus()
+  const botoes = document.querySelectorAll('button')
+  botoes.forEach((botao) =>{
+    botao.focus()
+  })
 }
 // Api do cep
 function eventoCep(cepAtual) {
@@ -141,11 +143,11 @@ formularios.querySelector('#formEmpresa').addEventListener("submit", (event) => 
   const repetirSenha = formularioEmpresa.repetirSenha.value;
   const email = formularioEmpresa.email.value;
   const cep = formularios.querySelector('#cepEmpresa')
-  const cnpj = formularioEmpresa.cnpj.value;
-  const bairro = formularioEmpresa.bairro.value;
-  const cidade = formularioEmpresa.cidade.value;
-  const endereco = formularioEmpresa.endereco.value;
-  const estado = formularioEmpresa.estado.value;
+  const cnpj = formularioEmpresa.cnpj.value
+  const bairro = formularioEmpresa.bairro
+  const cidade = formularioEmpresa.cidade
+  const endereco = formularioEmpresa.endereco
+  const estado = formularioEmpresa.estado
 
 
   if (!cepValido) {
@@ -174,7 +176,7 @@ formularios.querySelector('#formEmpresa').addEventListener("submit", (event) => 
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      "nome": nome, "empresa": empresa, "senha": senha, "email": email, "cnpj": cnpj, "cep": cep.value, "bairro": bairro, "cidade": cidade, "endereco": endereco, "estado": estado
+      "nome": nome, "empresa": empresa, "senha": senha, "email": email, "cnpj": cnpj, "cep": cep.value, "bairro": bairro.value, "cidade": cidade.value, "endereco": endereco.value, "estado": estado.value
     })
   })
     .then(response => {
@@ -197,10 +199,10 @@ formularios.querySelector('#formCliente').addEventListener("submit", (event) => 
   const repetirSenha = formularioCliente.repetirSenha.value;
   const email = formularioCliente.email.value;
   const cep = formularios.querySelector('#cepCliente')
-  const bairro = formularioCliente.bairro.value;
-  const cidade = formularioCliente.cidade.value;
-  const endereco = formularioCliente.endereco.value;
-  const estado = formularioCliente.estado.value;
+  const bairro = formularioCliente.bairro;
+  const cidade = formularioCliente.cidade;
+  const endereco = formularioCliente.endereco;
+  const estado = formularioCliente.estado
 
   if (nome.trim() === "" || senha.trim() === "" || email.trim() === "" || cep.value.trim() === "" || !cepValido) {
     alert("Preencha todos os campos");
@@ -224,7 +226,7 @@ formularios.querySelector('#formCliente').addEventListener("submit", (event) => 
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      "nome": nome, "senha": senha, "email": email, "cep": cep.value, "bairro": bairro, "cidade": cidade, "endereco": endereco, "estado": estado
+      "nome": nome, "senha": senha, "email": email, "cep": cep.value, "bairro": bairro.value, "cidade": cidade.value, "endereco": endereco.value, "estado": estado.value
     })
   })
     .then(response => {

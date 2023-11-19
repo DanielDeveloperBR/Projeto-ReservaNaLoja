@@ -32,6 +32,9 @@
     background-color: var(--diversos);
     color: white;
 }
+.containerLogin p, .containerLogin a{
+    white-space: nowrap;
+}
 .agendamento{
     margin-bottom: 0px;
 }

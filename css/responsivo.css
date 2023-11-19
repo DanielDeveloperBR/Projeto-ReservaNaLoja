@@ -16,6 +16,7 @@
         background-color: var(--telaFundo);
         opacity: 0.9;
         position: absolute;
+        z-index: 1;
     }
     nav span{
         display: none;

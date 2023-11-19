@@ -129,7 +129,7 @@ img {
 
 .container h1 {
     position: relative;
-    z-index: 1;
+    /* z-index: 0; */
     max-width: 316px;
     letter-spacing: 0em;
     font-size: 4em;

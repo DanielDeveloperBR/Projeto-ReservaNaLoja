@@ -20,7 +20,8 @@ form.addEventListener("submit", async (e) => {
         const response = await fetch('http://localhost:3000/usuario/login', {
             method: 'POST',
             headers: {
-                'Accept': 'text/html',
+                // 'Accept': 'text/html',
+                'Accept': 'application/json',
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({ "email": login, "senha": senha, "tipo": tipo })
