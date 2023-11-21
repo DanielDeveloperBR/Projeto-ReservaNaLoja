@@ -219,7 +219,7 @@ formularios.querySelector('#formCliente').addEventListener("submit", (event) => 
     alert("As senhas não são iguais.");
     return;
   }
-  fetch('/usuario', {
+  fetch('http://localhost:3000/usuario', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',

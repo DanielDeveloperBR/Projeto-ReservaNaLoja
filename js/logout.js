@@ -6,7 +6,6 @@ botao.addEventListener("click", (e) => {
     })
         .then((response) => response.text())
         .then((data) => {
-            console.log("Logout realizado com sucesso: " + data);
             window.location.href = "../index.html";
         })
         .catch((error) => {
