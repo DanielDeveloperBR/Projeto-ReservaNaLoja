@@ -2,14 +2,18 @@ const form = document.querySelector("form");
 let tipoAtual = 'cliente';
 
 const botaoRadio = document.getElementsByName("opcao");
+let imagem = document.querySelector('.imgLogin')
 
 botaoRadio.forEach(botao => {
     botao.addEventListener("click", () => {
-        if (botao) {
-            tipoAtual = botao.id;
+        if (botao.id === 'cliente') {
+            imagem.style.backgroundImage = "url(../img/bgCalendario.png)"
+        } else if (botao.id === 'empresa') {
+            imagem.style.backgroundImage = 'url(../img/graficoAgenda.png)'
         }
-    });
-});
+        tipoAtual = botao.id;
+    })
+})
 
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
