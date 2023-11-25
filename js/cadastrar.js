@@ -138,11 +138,24 @@ function previewImage(previewId) {
   let imagemInput = document.getElementById('imagem');
   let previewImg = document.getElementById(previewId);
   let imagemArquivo = imagemInput.files[0];
-  if (imagemInput.id === 'imagem') {
-    imagemArquivo = imagemInput.files[0];
-} else if (imagemInput.id === "imagemCliente") {
-    imagemArquivo = imagemInput.files[0];
+
+  if (imagemArquivo) {
+    let reader = new FileReader();
+
+    reader.onload = function (e) {
+      previewImg.src = e.target.result;
+    };
+
+    reader.readAsDataURL(imagemArquivo);
+  } else {
+    previewImg.src = '';
+  }
 }
+// Preve o cliente
+function previewImageCliente(previewId) {
+  let imagemInput = document.getElementById('imagemCliente');
+  let previewImg = document.getElementById(previewId);
+  let imagemArquivo = imagemInput.files[0];
 
   if (imagemArquivo) {
     let reader = new FileReader();
@@ -247,7 +260,7 @@ formularios.querySelector('#formCliente').addEventListener("submit", (event) => 
   const cidade = formularioCliente.cidade;
   const endereco = formularioCliente.endereco;
   const estado = formularioCliente.estado
-  const imagemPerfil = formularioCliente.imagemPerfilCliente.files[0]
+  const imagemPerfil = formularioCliente.imagemPerfil.files[0]
 
   if (!imagemPerfil) {
     alert("Selecione uma imagem para o perfil");

@@ -37,10 +37,14 @@
                 <h1>Cadastrar Cliente</h1>
                 <label for="nome">Nome</label>
                 <input type="text" name="nome" placeholder="Seu nome completo" required>
+
                 <label for="imagemCliente">Escolha a imagem do seu perfil</label>
-                <input type="file" name="imagemPerfilCliente" id="imagemCliente"
-                    accept="image/*" onchange="previewImage('previewCliente')">
+                <!-- Escolher imamgem -->
+                <input type="file" name="imagemPerfil" id="imagemCliente"
+                    accept="image/*" onchange="previewImageCliente('previewCliente')">
+                    <!-- Aparecer imagem -->
                 <img id="previewCliente">
+
                 <label for="senha">Senha</label>
                 <input type="password" name="senha" placeholder="Senha no máximo 10 caracteres">
                 <label for="repetirSenha">Repetir a senha</label>
@@ -53,6 +57,8 @@
                 <div class="containerNovosElementosCliente" style="text-align: center;"></div>
                 <button type="submit" style="margin-top: 20px;">Enviar</button>
             </form>
+
+
             <!-- Cadastrar usuario Empresa -->
             <form method="post" class="formCadastro" id="formEmpresa">
                 <h1>Cadastrar Empresa</h1>
@@ -60,10 +66,13 @@
                 <input type="text" name="nome" placeholder="Seu nome completo">
                 <label for="empresa">Nome da Empresa</label>
                 <input type="text" name="empresa" placeholder="O nome da sua empresa">
-
+                <!-- Imagem -->
                 <label for="imagem">Escolha a imagem do seu perfil</label>
                 <input type="file" name="imagemPerfil" placeholder="O nome da sua imagemPerfil" id="imagem" accept="image/*" onchange="previewImage('previewEmpresa')">
+                <!-- Mostrar imagem -->
                 <img id="previewEmpresa">
+
+
                 <label for="senha">Senha</label>
                 <input type="password" name="senha" placeholder="Senha no máximo 10 caracteres">
                 <label for="repetirSenha">Repetir a senha</label>
