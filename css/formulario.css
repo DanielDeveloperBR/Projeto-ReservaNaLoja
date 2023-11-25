@@ -34,6 +34,7 @@
 }
 .containerLogin p, .containerLogin a{
     white-space: nowrap;
+    font-size: 0.8em;
 }
 .agendamento{
     margin-bottom: 0px;

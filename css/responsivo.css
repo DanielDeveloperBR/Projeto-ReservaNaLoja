@@ -8,6 +8,12 @@
 
 /* tablet */
 @media all and (max-width: 690px) {
+    .disponivel div{
+        text-align: center;
+    }
+    p,a{
+        text-align: justify;
+    }
     nav {
         display: none;
         top: 100%;
@@ -81,5 +87,11 @@
     }
     footer img{
         width: 12em;
+    }
+}
+
+@media all and (max-width: 860px){
+    .container button{
+        font-size: 13px;
     }
 }

@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agendamento Expresso</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="fontawesome-free-6.4.2-web/css/all.css">
     <link rel="stylesheet" href="css/responsivo.css">
+    <link rel="stylesheet" href="fontawesome-free-6.4.2-web/css/fontawesome.css">
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 </head>
 
@@ -19,21 +19,20 @@
         <span id="hamb"><i class="fa-solid fa-bars"></i></span>
         <nav>
             <ul>
-                <li><a href="login.html">Login</a></li>
-                <li><a href="cadastrar.html">Cadastrar-se</a></li>
-                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="login.html" target="_self">Login</a></li>
+                <li><a href="cadastrar.html" target="_self">Cadastrar-se</a></li>
+                <li><a href="sobre.html" target="_self">Sobre</a></li>
                 <li><a href="faq.html" target="_blank">FAQ</a></li>
             </ul>
         </nav>
     </header>
     <main>
         <section class="container">
-            <div class="faixa"></div>
             <div>
                 <h1>Fique disponível para seus clientes!</h1>
                 <p>Você poderá disponibilizar horários e reservas para seus clientes!</p>
-                <button>Serei Cliente</button>
-                <button>Serei Empresa</button>
+                <button class="botaoCadastrar">Serei Cliente</button>
+                <button class="botaoCadastrar">Serei Empresa</button>
             </div>
             <div><img src="img/agenda-1.png" alt="celular"></div>
         </section>
@@ -83,12 +82,14 @@
                     <p class="autor">Maria, Cliente do Salão de Beleza</p>
                 </div>
                 <div>
-                    <p>Como alguém com uma agenda lotada, o 'Agendamento Expresso' me economiza muito tempo. Marcar consultas
+                    <p>Como alguém com uma agenda lotada, o 'Agendamento Expresso' me economiza muito tempo. Marcar
+                        consultas
                         médicas é rápido e simples. Recomendo a todos que precisam de atendimento médico eficiente.</p>
                     <p class="autor">João, Paciente do Consultório Médico</p>
                 </div>
                 <div>
-                    <p>Adoro a praticidade do 'Agendamento Expresso'. Agora, posso garantir meu horário preferido no estúdio
+                    <p>Adoro a praticidade do 'Agendamento Expresso'. Agora, posso garantir meu horário preferido no
+                        estúdio
                         de massagem sempre que quiser relaxar. É tão conveniente e me poupa muito tempo.</p>
                     <p class="autor">Carla, Cliente do Estúdio de Massagem</p>
                 </div>
@@ -120,6 +121,14 @@
     </footer>
     <script src="js/responsivo.js"></script>
     <script defer src="fontawesome-free-6.4.2-web/js/all.js"></script>
+    <script>
+        const botaoCadastrar = document.querySelectorAll('.botaoCadastrar')
+        botaoCadastrar.forEach((botao) => {
+            botao.addEventListener('click', () => {
+                window.location.href = "./cadastrar.html"
+            })
+        })
+    </script>
 </body>
 
 </html>

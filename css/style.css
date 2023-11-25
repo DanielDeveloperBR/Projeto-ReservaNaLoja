@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Anybody:wght@200;500&family=Bitter:ital,wght@0,400;0,800;1,300&family=Courier+Prime:wght@400;700&display=swap');
 
 * {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -18,9 +19,9 @@
     --sobre: #2846c0;
     --botao: #3554d3;
     /* fontes */
-    --tituloH1: url("fonts/AveriaSerifLibre-Bold.ttf");
-    --paragrafo: url('fonts/Fahkwang/Fahkwang-Medium.ttf');
-    --fontBotao: url("fonts/Fahkwang/Fahkwang-Bold.ttf");
+    --tituloH1: 'Bitter', 'Times New Roman', Times, serif;
+    --paragrafo: 'Anybody', 'Arial', 'Helvetica', 'sans-serif';
+    --fontBotao: 'Courier Prime', 'Courier New', Courier, monospace;
 }
 
 body {
@@ -34,7 +35,8 @@ h1 {
     margin: 20px 0;
 }
 
-p {
+p,
+a {
     font-family: var(--paragrafo);
 }
 
@@ -66,7 +68,7 @@ nav li {
 nav ul li a {
     padding: 20px;
     color: white;
-    font-size: 18px;
+    font-size: 16px;
     white-space: nowrap;
     cursor: pointer;
     font-weight: 500;
@@ -103,6 +105,7 @@ button {
     opacity: 1.0;
     cursor: pointer;
     font-family: var(--fontBotao);
+    font-size: 15px;
 }
 
 button:hover {
@@ -114,9 +117,15 @@ img {
     display: block;
     max-width: 100%;
 }
-.container, .disponivel, .sobre, .agendamento, .containerDepoimento{
+
+.container,
+.disponivel,
+.sobre,
+.agendamento,
+.containerDepoimento {
     margin-bottom: 40px;
 }
+
 /* Principal */
 .container {
     position: relative;
@@ -139,21 +148,9 @@ img {
     position: relative;
 }
 
-.faixa {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    top: 70px;
-    width: 100%;
-    height: 30px;
-    padding: 40px;
-    background-color: var(--telaFundo);
-    z-index: 0;
-}
-
 .container p {
     text-align: start;
-    max-width: 200px;
+    max-width: 288px;
 }
 
 /* disponibilidade da empresa */
@@ -175,7 +172,7 @@ img {
 .sobre p,
 .agendamento p,
 .disponivel p {
-    max-width: 350px;
+    max-width: 600px;
     line-height: 1.49em;
     text-align: center;
     text-transform: none;
@@ -241,7 +238,7 @@ img {
     padding: 30px;
     text-align: center;
     border-radius: 15px;
-    height: 250px;
+    height: 270px;
     max-width: 300px;
 }
 
