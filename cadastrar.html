@@ -37,6 +37,10 @@
                 <h1>Cadastrar Cliente</h1>
                 <label for="nome">Nome</label>
                 <input type="text" name="nome" placeholder="Seu nome completo" required>
+                <label for="imagemCliente">Escolha a imagem do seu perfil</label>
+                <input type="file" name="imagemPerfilCliente" id="imagemCliente"
+                    accept="image/*" onchange="previewImage('previewCliente')">
+                <img id="previewCliente">
                 <label for="senha">Senha</label>
                 <input type="password" name="senha" placeholder="Senha no máximo 10 caracteres">
                 <label for="repetirSenha">Repetir a senha</label>
@@ -44,7 +48,8 @@
                 <label for="email">Email</label>
                 <input type="email" name="email" placeholder="seuemail@exemplo.com">
                 <label for="cep">CEP</label>
-                <input type="number" name="cepCliente" maxlength="8" placeholder="Digite apenas números" id="cepCliente">
+                <input type="number" name="cepCliente" maxlength="8" placeholder="Digite apenas números"
+                    id="cepCliente">
                 <div class="containerNovosElementosCliente" style="text-align: center;"></div>
                 <button type="submit" style="margin-top: 20px;">Enviar</button>
             </form>
@@ -55,6 +60,10 @@
                 <input type="text" name="nome" placeholder="Seu nome completo">
                 <label for="empresa">Nome da Empresa</label>
                 <input type="text" name="empresa" placeholder="O nome da sua empresa">
+
+                <label for="imagem">Escolha a imagem do seu perfil</label>
+                <input type="file" name="imagemPerfil" placeholder="O nome da sua imagemPerfil" id="imagem" accept="image/*" onchange="previewImage('previewEmpresa')">
+                <img id="previewEmpresa">
                 <label for="senha">Senha</label>
                 <input type="password" name="senha" placeholder="Senha no máximo 10 caracteres">
                 <label for="repetirSenha">Repetir a senha</label>
@@ -64,7 +73,8 @@
                 <label for="cnpj">CNPJ</label>
                 <input type="number" name="cnpj" placeholder="seuemail@exemplo.com">
                 <label for="cep">CEP</label>
-                <input type="number" name="cepEmpresa" maxlength="8" placeholder="Digite apenas números" id="cepEmpresa">
+                <input type="number" name="cepEmpresa" maxlength="8" placeholder="Digite apenas números"
+                    id="cepEmpresa">
                 <div class="containerNovosElementosEmpresa" style="text-align: center;"></div>
                 <button type="submit" style="margin-top: 20px;">Enviar</button>
             </form>

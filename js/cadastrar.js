@@ -29,7 +29,7 @@ botaoRadio.forEach(botao => {
 
 function focar() {
   const botoes = document.querySelectorAll('button')
-  botoes.forEach((botao) =>{
+  botoes.forEach((botao) => {
     botao.focus()
   })
 }
@@ -133,8 +133,31 @@ function criarInput(formulario, labelText, inputValue, nomeInput) {
 function mostrarMensagem(mensagem) {
   alert(mensagem)
 }
+// PReve a imagem
+function previewImage(previewId) {
+  let imagemInput = document.getElementById('imagem');
+  let previewImg = document.getElementById(previewId);
+  let imagemArquivo = imagemInput.files[0];
+  if (imagemInput.id === 'imagem') {
+    imagemArquivo = imagemInput.files[0];
+} else if (imagemInput.id === "imagemCliente") {
+    imagemArquivo = imagemInput.files[0];
+}
+
+  if (imagemArquivo) {
+    let reader = new FileReader();
+
+    reader.onload = function (e) {
+      previewImg.src = e.target.result;
+    };
+
+    reader.readAsDataURL(imagemArquivo);
+  } else {
+    previewImg.src = '';
+  }
+}
 // Cadastrar a empresa
-formularios.querySelector('#formEmpresa').addEventListener("submit", (event) => {
+formularios.querySelector('#formEmpresa').addEventListener("submit", async (event) => {
   event.preventDefault();
   const formularioEmpresa = formularios.querySelector('#formEmpresa')
   const nome = formularioEmpresa.nome.value;
@@ -148,12 +171,18 @@ formularios.querySelector('#formEmpresa').addEventListener("submit", (event) => 
   const cidade = formularioEmpresa.cidade
   const endereco = formularioEmpresa.endereco
   const estado = formularioEmpresa.estado
+  const imagemPerfil = formularioEmpresa.imagemPerfil.files[0]
 
+  if (!imagemPerfil) {
+    alert("Selecione uma imagem para o perfil");
+    return;
+  }
 
   if (!cepValido) {
     mostrarMensagem('CEP inválido');
     return;
   }
+
   if (nome.trim() === "" || senha.trim() === "" || email.trim() === "" || cep.value.trim() === "" || cnpj === "" || empresa.trim() === "") {
     alert("Preencha todos os campos");
     return;
@@ -169,26 +198,41 @@ formularios.querySelector('#formEmpresa').addEventListener("submit", (event) => 
     return;
   }
 
+  const formData = new FormData();
+  formData.append('nome', nome);
+  formData.append('empresa', empresa);
+  formData.append('senha', senha);
+  formData.append('email', email);
+  formData.append('cep', cep.value);
+  formData.append('cnpj', cnpj);
+  formData.append('bairro', bairro.value);
+  formData.append('cidade', cidade.value);
+  formData.append('endereco', endereco.value);
+  formData.append('estado', estado.value);
+  formData.append('imagemPerfil', imagemPerfil);
+
   fetch('http://localhost:3000/empresa', {
     method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      "nome": nome, "empresa": empresa, "senha": senha, "email": email, "cnpj": cnpj, "cep": cep.value, "bairro": bairro.value, "cidade": cidade.value, "endereco": endereco.value, "estado": estado.value
-    })
+    body: formData,
   })
-    .then(response => {
+    .then(async response => {
       if (!response.ok) {
-        throw new Error('Erro na solicitação. Status: ' + response.status);
+        if (response.status === 422) {
+          return response.json().then(error => {
+            throw new Error(`Erro: ${error.error}`);
+          });
+        }
+        throw new Error(`Erro na solicitação. Status: ${response.status}`);
       }
-      document.location.href = "./login.html"
+      document.location.href = "./login.html";
       return response.json();
     })
-    .catch(err => console.error("Erro:", err))
+    .catch(err => {
+      console.error("Erro:", err.message);
+    });
+});
 
-})
+
 
 // Cadastrar o cliente
 formularios.querySelector('#formCliente').addEventListener("submit", (event) => {
@@ -203,6 +247,12 @@ formularios.querySelector('#formCliente').addEventListener("submit", (event) => 
   const cidade = formularioCliente.cidade;
   const endereco = formularioCliente.endereco;
   const estado = formularioCliente.estado
+  const imagemPerfil = formularioCliente.imagemPerfilCliente.files[0]
+
+  if (!imagemPerfil) {
+    alert("Selecione uma imagem para o perfil");
+    return;
+  }
 
   if (nome.trim() === "" || senha.trim() === "" || email.trim() === "" || cep.value.trim() === "" || !cepValido) {
     alert("Preencha todos os campos");
@@ -219,23 +269,44 @@ formularios.querySelector('#formCliente').addEventListener("submit", (event) => 
     alert("As senhas não são iguais.");
     return;
   }
+  const formData = new FormData();
+  formData.append('nome', nome);
+  formData.append('senha', senha);
+  formData.append('email', email);
+  formData.append('cep', cep.value);
+  formData.append('bairro', bairro.value);
+  formData.append('cidade', cidade.value);
+  formData.append('endereco', endereco.value);
+  formData.append('estado', estado.value);
+  formData.append('imagemPerfil', imagemPerfil);
   fetch('http://localhost:3000/usuario', {
     method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      "nome": nome, "senha": senha, "email": email, "cep": cep.value, "bairro": bairro.value, "cidade": cidade.value, "endereco": endereco.value, "estado": estado.value
-    })
+    body: formData,
   })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Erro na solicitação. Status: ' + response.status);
+  .then(async response => {
+    if (!response.ok) {
+      if (response.status === 422) {
+        return response.json().then(error => {
+          throw new Error(`Erro: ${error.error}`);
+        });
       }
-      document.location.href = "./login.html"
-      return response.json();
-    })
-    .catch(err => console.error("Erro:", err))
+      throw new Error(`Erro na solicitação. Status: ${response.status}`);
+    }
+    document.location.href = "./login.html";
+    return response.json();
+  })
+  .catch(err => {
+    console.error("Erro:", err.message);
+  });
 })
+
+// Função para converter imagem para base64
+async function convertImageToBase64(imageFile) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onloadend = () => resolve(reader.result.split(',')[1]);
+    reader.onerror = reject;
+    reader.readAsDataURL(imageFile);
+  })
+}
 eventoCep(cepAtual)

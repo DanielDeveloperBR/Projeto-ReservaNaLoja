@@ -8,8 +8,10 @@ botaoRadio.forEach(botao => {
     botao.addEventListener("click", () => {
         if (botao.id === 'cliente') {
             imagem.style.backgroundImage = "url(../img/bgCalendario.png)"
+            imagem.style.animation = "Cliente 1s ease-in-out"
         } else if (botao.id === 'empresa') {
             imagem.style.backgroundImage = 'url(../img/graficoAgenda.png)'
+            imagem.style.animation = "Empresa 1s ease-in-out"
         }
         tipoAtual = botao.id;
     })
