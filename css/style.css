@@ -190,7 +190,9 @@ img {
     width: 60%;
     margin: 30px 0px;
 }
-
+.agendamento a, .sobre a{
+    min-width: 800px;
+}
 /* agendamento */
 
 .agendamento {
@@ -316,13 +318,70 @@ footer img {
 }
 
 .fa-envelope {
-    color: #910d0d;
+    color: #db4a39;
 }
 
 .fa-whatsapp {
-    color: #7eed7e;
+    color: #a4c639;
 }
 
 .fa-phone {
-    color: rgb(7, 7, 99);
+    color: rgb(154, 235, 231);
 }
+
+/* Estilo para o carrossel */
+#carousel-container {
+    width: 100%;
+    max-height: 500px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#carousel-wrapper {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    align-items: center; 
+}
+
+.carousel-item {
+    min-width: 100%;
+}
+
+.carousel-item img {
+    max-width: 100%; 
+    height: auto; 
+    margin: auto;
+    min-height: 500px;
+    width: 100%;
+}
+
+#carousel-container button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    cursor: pointer;
+    background-color: var(--telaFundo);
+    color: white;
+    border: none;
+    outline: none;
+}
+
+#prevBtn {
+    left: 10px;
+}
+
+#nextBtn {
+    right: 10px;
+}
+
+/* Adicionando estilos para tornar o carrossel responsivo */
+@media screen and (max-width: 768px) {
+    .carousel-item {
+        min-width: 100%;
+    }
+}
+

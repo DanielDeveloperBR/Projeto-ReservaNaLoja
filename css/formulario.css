@@ -192,6 +192,12 @@ fieldset {
 #formEmpresa {
     margin: 20px auto;
 }
+img#previewCliente, img#previewEmpresa {
+    border: 3px solid white;
+    height: 5em;
+    width: 5em;
+    border-radius: 30px;
+}
 
 /* responsividade do login */
 @media all and (max-width: 665px) {
