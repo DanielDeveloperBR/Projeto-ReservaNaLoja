@@ -193,12 +193,17 @@ fieldset {
     margin: 20px auto;
 }
 img#previewCliente, img#previewEmpresa {
+    display: none;
     border: 3px solid white;
     height: 5em;
     width: 5em;
     border-radius: 30px;
 }
-
+img#previewImagemEmpresa{
+    display: none;
+    border: 3px solid white;
+    border-radius: 10px;
+}
 /* responsividade do login */
 @media all and (max-width: 665px) {
     .imgLogin {

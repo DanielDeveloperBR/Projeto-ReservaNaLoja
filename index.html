@@ -142,7 +142,7 @@
             try {
                 const response = await fetch('http://localhost:3000/empresa');
                 const empresaData = await response.json();
-                const imagens = empresaData.foto.map(item => item.imagemPerfil);
+                const imagens = empresaData.foto.map(item => item.imagemEmpresa);
 
                 const carouselWrapper = document.getElementById('carousel-wrapper');
                 const prevBtn = document.getElementById('prevBtn');

@@ -143,6 +143,7 @@ function previewImage(previewId) {
     let reader = new FileReader();
 
     reader.onload = function (e) {
+      previewImg.style.display = "block"
       previewImg.src = e.target.result;
     };
 
@@ -161,6 +162,28 @@ function previewImageCliente(previewId) {
     let reader = new FileReader();
 
     reader.onload = function (e) {
+      previewImg.style.display = "block"
+      previewImg.src = e.target.result;
+    };
+
+    reader.readAsDataURL(imagemArquivo);
+  } else {
+    previewImg.src = '';
+  }
+}
+
+
+function preveImagem(previewId) {
+  console.log('Função previewImagemEmpresa chamada.');
+  const imagemEmpresa = document.getElementById('imagemEmpresa');
+  const previewImg = document.getElementById(previewId);
+  const imagemArquivo = imagemEmpresa.files[0];
+
+  if (imagemArquivo) {
+    const reader = new FileReader();
+
+    reader.onload = function (e) {
+      previewImg.style.display = "block"
       previewImg.src = e.target.result;
     };
 
@@ -185,8 +208,9 @@ formularios.querySelector('#formEmpresa').addEventListener("submit", async (even
   const endereco = formularioEmpresa.endereco
   const estado = formularioEmpresa.estado
   const imagemPerfil = formularioEmpresa.imagemPerfil.files[0]
+  const imagemEmpresa = formularioEmpresa.imagemEmpresa.files[0]
 
-  if (!imagemPerfil) {
+  if (!imagemPerfil || !imagemEmpresa) {
     alert("Selecione uma imagem para o perfil");
     return;
   }
@@ -223,6 +247,7 @@ formularios.querySelector('#formEmpresa').addEventListener("submit", async (even
   formData.append('endereco', endereco.value);
   formData.append('estado', estado.value);
   formData.append('imagemPerfil', imagemPerfil);
+  formData.append('imagemEmpresa', imagemEmpresa);
 
   fetch('http://localhost:3000/empresa', {
     method: 'POST',
@@ -296,21 +321,21 @@ formularios.querySelector('#formCliente').addEventListener("submit", (event) => 
     method: 'POST',
     body: formData,
   })
-  .then(async response => {
-    if (!response.ok) {
-      if (response.status === 422) {
-        return response.json().then(error => {
-          throw new Error(`Erro: ${error.error}`);
-        });
+    .then(async response => {
+      if (!response.ok) {
+        if (response.status === 422) {
+          return response.json().then(error => {
+            throw new Error(`Erro: ${error.error}`);
+          });
+        }
+        throw new Error(`Erro na solicitação. Status: ${response.status}`);
       }
-      throw new Error(`Erro na solicitação. Status: ${response.status}`);
-    }
-    document.location.href = "./login.html";
-    return response.json();
-  })
-  .catch(err => {
-    console.error("Erro:", err.message);
-  });
+      document.location.href = "./login.html";
+      return response.json();
+    })
+    .catch(err => {
+      console.error("Erro:", err.message);
+    });
 })
 
 // Função para converter imagem para base64

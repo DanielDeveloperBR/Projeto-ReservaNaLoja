@@ -66,11 +66,17 @@
                 <input type="text" name="nome" placeholder="Seu nome completo">
                 <label for="empresa">Nome da Empresa</label>
                 <input type="text" name="empresa" placeholder="O nome da sua empresa">
-                <!-- Imagem -->
+                <!-- Imagem perfil -->
                 <label for="imagem">Escolha a imagem do seu perfil</label>
                 <input type="file" name="imagemPerfil" placeholder="O nome da sua imagemPerfil" id="imagem" accept="image/*" onchange="previewImage('previewEmpresa')">
                 <!-- Mostrar imagem -->
                 <img id="previewEmpresa">
+
+                <!-- Imagem Empresa -->
+                <label for="imagem">Escolha a imagem da sua Empresa</label>
+                <input type="file" name="imagemEmpresa" id="imagemEmpresa" accept="image/*"  onchange="preveImagem('previewImagemEmpresa')">
+                <!-- Mostrar imagem -->
+                <img id="previewImagemEmpresa">
 
 
                 <label for="senha">Senha</label>
@@ -112,10 +118,10 @@
         </div>
         <p>&copy; Todos os direitos reservados</p>
     </footer>
+    <script src="js/cadastrar.js"></script>
     <script defer src="fontawesome-free-6.4.2-web/js/all.js"></script>
     <script src="js/responsivo.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="js/cadastrar.js"></script>
 </body>
 
 </html>
