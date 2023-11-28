@@ -154,7 +154,9 @@ img {
 }
 
 /* disponibilidade da empresa */
-
+.disponivel p{
+    margin-bottom: 30px;
+}
 /* Pagina sobre a empresa */
 .sobre,
 .disponivel {
@@ -189,9 +191,6 @@ img {
 .sobre button {
     width: 60%;
     margin: 30px 0px;
-}
-.agendamento a, .sobre a{
-    min-width: 800px;
 }
 /* agendamento */
 
@@ -331,6 +330,7 @@ footer img {
 
 /* Estilo para o carrossel */
 #carousel-container {
+    max-width: 1200px;
     width: 100%;
     max-height: 500px;
     overflow: hidden;
@@ -338,6 +338,7 @@ footer img {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 #carousel-wrapper {
@@ -384,4 +385,3 @@ footer img {
         min-width: 100%;
     }
 }
-

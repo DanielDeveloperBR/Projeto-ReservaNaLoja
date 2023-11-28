@@ -27,7 +27,7 @@
         </nav>
     </header>
     <style>
-    
+
     </style>
     <main>
         <section class="container">
@@ -62,7 +62,7 @@
             <p>Fale sobre as características mais importantes deste produto ou serviço. Destacar as mais populares
                 funciona também! Fale sobre as características mais importantes deste produto ou serviço. Destacar as
                 mais populares funciona também!</p>
-            <a href="sobre.html" target="_self"><button>Saiba mais</button></a>
+            <button id="sobre">Saiba mais</button>
         </section>
         <!-- Um pouco mais -->
         <section class="agendamento">
@@ -76,7 +76,7 @@
                     como salões de beleza, massagistas, médicos e outras empresas que necessitam de agendamento de
                     horários!</p>
             </div>
-            <a href="cadastrar.html" target="_self"><button>Cadastrar Empresa</button></a>
+            <button class="botaoCadastrar">Cadastrar Empresa</button>
         </section>
         <section class="containerDepoimento">
             <!-- Depoimento -->
@@ -129,11 +129,19 @@
     <script src="js/responsivo.js"></script>
     <script defer src="fontawesome-free-6.4.2-web/js/all.js"></script>
     <script>
+        const botaoSobre = document.getElementById('sobre')
+        botaoSobre.addEventListener("click", () => {
+            window.location.href = "./sobre.html"
+        })
         const botaoCadastrar = document.querySelectorAll('.botaoCadastrar')
         botaoCadastrar.forEach((botao) => {
             botao.addEventListener('click', () => {
                 window.location.href = "./cadastrar.html"
             })
+        })
+        const carouselContainer = document.getElementById('carousel-container')
+        carouselContainer.addEventListener('click', () => {
+            window.location.href = "/login.html"
         })
     </script>
     <!-- Mostrar as empresas  -->
@@ -142,22 +150,39 @@
             try {
                 const response = await fetch('http://localhost:3000/empresa');
                 const empresaData = await response.json();
+                console.log(empresaData)
                 const imagens = empresaData.foto.map(item => item.imagemEmpresa);
+                console.log(imagens)
 
                 const carouselWrapper = document.getElementById('carousel-wrapper');
+
                 const prevBtn = document.getElementById('prevBtn');
                 const nextBtn = document.getElementById('nextBtn');
 
-                imagens.forEach(imagem => {
-                    const slide = document.createElement('div');
-                    slide.classList.add('carousel-item');
+                if (imagens.length > 0) {
+                    imagens.forEach(imagem => {
+                        const divSlide = document.createElement('div');
+                        divSlide.classList.add('carousel-item');
+                        const img = document.createElement('img')
+                        img.src = imagem;
+                        divSlide.appendChild(img);
+                        carouselWrapper.appendChild(divSlide);
+                        nextBtn.style.display = 'block'
+                        prevBtn.style.display = 'block'
+                    });
+                } else {
+                    // Adicione a lógica para exibir a imagem padrão
+                    const divSlide = document.createElement('div');
+                    divSlide.classList.add('carousel-item');
                     const img = document.createElement('img');
-                    img.src = imagem;
-                    slide.appendChild(img);
-                    carouselWrapper.appendChild(slide);
-                });
+                    img.src = "./img/bgCalendario.png";
+                    divSlide.appendChild(img);
+                    carouselWrapper.appendChild(divSlide);
+                    prevBtn.style.display = 'none'
+                    nextBtn.style.display = 'none'
+                }
 
-                let currentIndex = 0;
+                let currentIndex = 0
 
                 function showSlide(index) {
                     const offset = -index * 100;
@@ -179,6 +204,7 @@
             }
         });
     </script>
+
 </body>
 
 </html>

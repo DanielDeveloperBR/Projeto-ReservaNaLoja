@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 #hamb {
     display: none;
     cursor: pointer;
@@ -8,12 +9,15 @@
 
 /* tablet */
 @media all and (max-width: 690px) {
-    .disponivel div{
+    .disponivel div {
         text-align: center;
     }
-    p,a{
+
+    p,
+    a {
         text-align: justify;
     }
+
     nav {
         display: none;
         top: 100%;
@@ -24,9 +28,11 @@
         position: absolute;
         z-index: 1;
     }
-    nav span{
+
+    nav span {
         display: none;
     }
+
     nav li {
         display: flex;
         justify-content: center;
@@ -53,30 +59,35 @@
         font-size: 4em;
     }
 
-    .depoimento{
+    .depoimento {
         max-width: 90%;
     }
-    .agendamento button{
+
+    .agendamento button {
         width: auto;
         padding: 20px;
     }
 }
 
 @media all and (max-width: 612px) {
-    .faixa{
+    .faixa {
         display: none;
     }
-    .contatos p{
+
+    .contatos p {
         display: none;
     }
-    .containerSocial{
+
+    .containerSocial {
         display: flex;
         align-items: center;
         justify-content: center;
     }
+
     .container h1 {
         font-size: 3em;
     }
+
     .container {
         flex-direction: column;
         width: 100%;
@@ -85,13 +96,42 @@
     .container img {
         width: 100%;
     }
-    footer img{
+
+    footer img {
         width: 12em;
     }
 }
 
-@media all and (max-width: 860px){
-    .container button{
-        font-size: 13px;
+@media all and (max-width: 860px) {
+    h1 {
+        font-size: 50px;
+    }
+
+    .container button {
+        font-size: 17px;
+    }
+
+    nav ul li a {
+        font-size: clamp(20px, 18px, 30px);
+    }
+
+    .sobre p,
+    .agendamento p,
+    .disponivel p {
+        font-size: clamp(20px, 18px, 26px);
+        text-align: justify;
+        border: 1px solid black;
+        padding: 20px;
+        border-radius: 20px;
+    }
+
+    .container p {
+        font-size: 30px;
+        max-width: 430px;
+    }
+
+    .depoimento div {
+        height: 273px;
+        font-size: clamp(20px, 16px);
     }
 }
