@@ -1,0 +1,44 @@
+  /* Função modal */
+  .modal {
+    display: flex;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.containerModal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: var(--telaFundo);
+    padding: 20px;
+    border-radius: 30px;
+    max-width: 400px;
+    margin: auto;
+}
+
+.modalEditar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+  
+}
+
+.modalEditar label{
+    color: white;
+    font-weight: bolder;
+    margin: 0px 10px;
+}
+.containerBotao{
+    display: inline-block;
+}
+

@@ -389,6 +389,7 @@ footer img {
     height: auto;
     margin: auto;
     max-width: 500px;
+    border-radius: 10px;
 }
 
 #carousel-container button {
