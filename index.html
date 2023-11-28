@@ -43,25 +43,22 @@
         <section class="disponivel">
             <div>
                 <h1>Está disponivel esse horario</h1>
-                <p>O que há de especial sobre o seu produto, empresa ou serviço? Use este espaço para destacar as coisas
-                    que diferenciam você da concorrência, seja uma característica especial, uma filosofia única ou
-                    prêmios e reconhecimentos recebidos. Pense nisso como sua abordagem para chamar a atenção do leitor.
-                </p>
+                <p>Destaque o diferencial dos seus horários para proporcionar uma experiência única aos seus clientes. Na nossa plataforma, acreditamos em oferecer não apenas serviços, mas momentos especiais. Seja através de um atendimento personalizado, flexibilidade de agendamento ou outros benefícios exclusivos, seus clientes vão apreciar a conveniência e a qualidade que só a sua empresa pode oferecer. Personalize seus horários e faça cada agendamento uma oportunidade para encantar!</p>
+
             </div>
             <div id="carousel-container">
                 <div id="carousel-wrapper">
                     <!-- Imagens do carrossel serão adicionadas dinamicamente aqui -->
                 </div>
-                <button id="prevBtn">&lt;</button>
-                <button id="nextBtn">&gt;</button>
+                <button id="prevBtn"><i class="fa-solid fa-square-caret-left"></i></button>
+                <button id="nextBtn"><i class="fa-solid fa-square-caret-right"></i></button>
             </div>
         </section>
         <!-- Sobre a empresa -->
         <section class="sobre">
             <h1>Sobre a empresa</h1>
-            <p>Fale sobre as características mais importantes deste produto ou serviço. Destacar as mais populares
-                funciona também! Fale sobre as características mais importantes deste produto ou serviço. Destacar as
-                mais populares funciona também!</p>
+            <p>Agendamento Expresso, onde a reserva de horários é mais do que uma conveniência. É um testemunho do nosso compromisso em oferecer um serviço impecável, onde cada agendamento reflete a qualidade excepcional que nos torna únicos no setor.</p>
+
             <button id="sobre">Saiba mais</button>
         </section>
         <!-- Um pouco mais -->
@@ -82,19 +79,19 @@
             <!-- Depoimento -->
             <div class="depoimento">
                 <h1>Depoimentos</h1>
-                <div>
+                <div class="containerCards">
                     <p>O 'Agendamento Expresso' tornou minha vida mais fácil! Agendar um horário no meu salão de beleza
                         favorito agora é uma brisa. Não preciso mais esperar em filas ou ligar para agendar. Basta
                         alguns cliques, e meu horário está reservado.</p>
                     <p class="autor">Maria, Cliente do Salão de Beleza</p>
                 </div>
-                <div>
+                <div class="containerCards">
                     <p>Como alguém com uma agenda lotada, o 'Agendamento Expresso' me economiza muito tempo. Marcar
                         consultas
                         médicas é rápido e simples. Recomendo a todos que precisam de atendimento médico eficiente.</p>
                     <p class="autor">João, Paciente do Consultório Médico</p>
                 </div>
-                <div>
+                <div class="containerCards">
                     <p>Adoro a praticidade do 'Agendamento Expresso'. Agora, posso garantir meu horário preferido no
                         estúdio
                         de massagem sempre que quiser relaxar. É tão conveniente e me poupa muito tempo.</p>
@@ -138,10 +135,6 @@
             botao.addEventListener('click', () => {
                 window.location.href = "./cadastrar.html"
             })
-        })
-        const carouselContainer = document.getElementById('carousel-container')
-        carouselContainer.addEventListener('click', () => {
-            window.location.href = "/login.html"
         })
     </script>
     <!-- Mostrar as empresas  -->
@@ -204,7 +197,29 @@
             }
         });
     </script>
-
+    <!-- Animacao -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const sections = document.querySelectorAll("section");
+    
+            function checkVisibility() {
+                sections.forEach((section) => {
+                    const rect = section.getBoundingClientRect();
+                    const isVisible = rect.top < window.innerHeight * 0.8 && rect.bottom >= 0;
+                    if (isVisible) {
+                        section.classList.add("active");
+                    }
+                });
+            }
+    
+            window.addEventListener("scroll", checkVisibility);
+            window.addEventListener("resize", checkVisibility);
+            checkVisibility(); // Executar verificação inicial
+    
+            // Adicione mais lógica conforme necessário
+        });
+    </script>
+    
 </body>
 
 </html>

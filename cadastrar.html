@@ -10,14 +10,18 @@
     <link rel="stylesheet" href="css/formulario.css">
     <title>Cadastrar</title>
 </head>
-
+<style>
+    nav li a{
+        color: #ffffff94;
+    }
+</style>
 <body>
     <header>
         <a href="index.html"><img src="img/logo.png" alt="logo"></a>
         <span id="hamb"><i class="fa-solid fa-bars"></i></span>
         <nav>
             <ul>
-                <li><span>Já tem conta?</span><a href="login.html">login</a></li>
+                <li><span>Já tem conta?</span><a style="color: #ffffff94;" href="login.html">Fazer Login</a></li>
             </ul>
         </nav>
     </header>
@@ -65,7 +69,11 @@
                 <label for="nome">Nome</label>
                 <input type="text" name="nome" placeholder="Seu nome completo">
                 <label for="empresa">Nome da Empresa</label>
+
                 <input type="text" name="empresa" placeholder="O nome da sua empresa">
+
+                <label for="categoria">Categoria</label>
+                <input type="text" name="categoria" placeholder="O tipo da sua empresa" id="categoria">
                 <!-- Imagem perfil -->
                 <label for="imagem">Escolha a imagem do seu perfil</label>
                 <input type="file" name="imagemPerfil" placeholder="O nome da sua imagemPerfil" id="imagem" accept="image/*" onchange="previewImage('previewEmpresa')">

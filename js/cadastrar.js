@@ -209,6 +209,7 @@ formularios.querySelector('#formEmpresa').addEventListener("submit", async (even
   const estado = formularioEmpresa.estado
   const imagemPerfil = formularioEmpresa.imagemPerfil.files[0]
   const imagemEmpresa = formularioEmpresa.imagemEmpresa.files[0]
+  const categoria = formularioEmpresa.categoria.value
 
   if (!imagemPerfil || !imagemEmpresa) {
     alert("Selecione uma imagem para o perfil");
@@ -220,7 +221,7 @@ formularios.querySelector('#formEmpresa').addEventListener("submit", async (even
     return;
   }
 
-  if (nome.trim() === "" || senha.trim() === "" || email.trim() === "" || cep.value.trim() === "" || cnpj === "" || empresa.trim() === "") {
+  if (nome.trim() === "" || senha.trim() === "" || email.trim() === "" || cep.value.trim() === "" || cnpj === "" || empresa.trim() === "" || categoria === '') {
     alert("Preencha todos os campos");
     return;
   }
@@ -248,6 +249,7 @@ formularios.querySelector('#formEmpresa').addEventListener("submit", async (even
   formData.append('estado', estado.value);
   formData.append('imagemPerfil', imagemPerfil);
   formData.append('imagemEmpresa', imagemEmpresa);
+  formData.append('categoria', categoria);
 
   fetch('http://localhost:3000/empresa', {
     method: 'POST',

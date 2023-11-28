@@ -7,15 +7,42 @@
     padding: 10px;
 }
 
-/* tablet */
+
+
+
+
+/* ipad */
+@media all and (max-width: 860px) {
+    .container button {
+        font-size: 14px;
+    }
+
+  
+    .sobre p,
+    .agendamento p,
+    .disponivel p {
+        border: 1px solid black;
+        padding: 20px;
+        border-radius: 20px;
+        background-color: #cbcbcb80;
+    }
+
+    .sobre button,
+    .agendamento button {
+        font-size: 20px;
+    }
+
+    .container p {
+
+        max-width: 430px;
+    }
+
+}
+
+/* celulares */
 @media all and (max-width: 690px) {
     .disponivel div {
         text-align: center;
-    }
-
-    p,
-    a {
-        text-align: justify;
     }
 
     nav {
@@ -51,10 +78,6 @@
         color: white;
     }
 
-    main {
-        width: 100%;
-    }
-
     .container h1 {
         font-size: 4em;
     }
@@ -67,13 +90,10 @@
         width: auto;
         padding: 20px;
     }
+
 }
 
-@media all and (max-width: 612px) {
-    .faixa {
-        display: none;
-    }
-
+@media all and (max-width: 630px) {
     .contatos p {
         display: none;
     }
@@ -100,38 +120,47 @@
     footer img {
         width: 12em;
     }
-}
-
-@media all and (max-width: 860px) {
-    h1 {
-        font-size: 50px;
-    }
 
     .container button {
-        font-size: 17px;
-    }
-
-    nav ul li a {
-        font-size: clamp(20px, 18px, 30px);
-    }
-
-    .sobre p,
-    .agendamento p,
-    .disponivel p {
-        font-size: clamp(20px, 18px, 26px);
-        text-align: justify;
-        border: 1px solid black;
-        padding: 20px;
-        border-radius: 20px;
-    }
-
-    .container p {
-        font-size: 30px;
-        max-width: 430px;
+        font-size: 14px;
     }
 
     .depoimento div {
-        height: 273px;
-        font-size: clamp(20px, 16px);
+        max-width: 100%;
+    }
+}
+
+@media all and (max-width: 300px) {
+    .sobre, .disponivel, .containerDepoimento, .agendamento{
+        max-width: 70%;
+        margin: auto;
+    }
+    .container button {
+        font-size: 12px;
+    }
+
+    .sobre p,
+    .disponivel p,
+    .agendamento p {
+        word-break: break-all;
+        text-align: justify;
+        letter-spacing: 2px;
+        line-height: 28px;
+    }
+    .depoimento h1{
+        font-size: 30px;
+    }
+
+    .container p, .container {
+        max-width: 80%;
+        margin: auto;
+    }
+}
+
+
+/* Adicionando estilos para tornar o carrossel responsivo */
+@media screen and (max-width: 768px) {
+    .carousel-item {
+        min-width: 100%;
     }
 }

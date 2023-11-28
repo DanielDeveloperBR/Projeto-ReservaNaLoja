@@ -26,18 +26,22 @@
 
 body {
     height: 100vh;
-    /* background-color: var(--diversos); */
 }
 
 
 h1 {
     font-family: var(--tituloH1);
     margin: 20px 0;
+    font-size: 30px;
 }
 
 p,
 a {
     font-family: var(--paragrafo);
+}
+
+p {
+    font-size: 13px;
 }
 
 header {
@@ -68,7 +72,7 @@ nav li {
 nav ul li a {
     padding: 20px;
     color: white;
-    font-size: 16px;
+    font-size: 15px;
     white-space: nowrap;
     cursor: pointer;
     font-weight: 500;
@@ -76,7 +80,6 @@ nav ul li a {
 
 main,
 .containerGeral {
-    min-width: 300px;
     margin: auto;
     width: 100%;
     background-color: white;
@@ -105,7 +108,8 @@ button {
     opacity: 1.0;
     cursor: pointer;
     font-family: var(--fontBotao);
-    font-size: 15px;
+    font-size: 0.9em;
+
 }
 
 button:hover {
@@ -134,6 +138,14 @@ img {
     align-items: center;
     margin: auto;
     max-width: 100%;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.container.active {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .container h1 {
@@ -151,12 +163,14 @@ img {
 .container p {
     text-align: start;
     max-width: 288px;
+    font-size: 17px;
 }
 
 /* disponibilidade da empresa */
-.disponivel p{
+.disponivel p {
     margin-bottom: 30px;
 }
+
 /* Pagina sobre a empresa */
 .sobre,
 .disponivel {
@@ -165,6 +179,15 @@ img {
     align-items: center;
     flex-direction: column;
     text-align: center;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.sobre.active,
+.disponivel.active {
+    opacity: 1;
+    animation: fadeInLado 0.8s ease-out;
 }
 
 .sobre h1 {
@@ -174,12 +197,16 @@ img {
 .sobre p,
 .agendamento p,
 .disponivel p {
-    max-width: 600px;
+    max-width: 633px;
     line-height: 1.49em;
     text-align: center;
     text-transform: none;
     letter-spacing: 0.26em;
     font-family: var(--paragrafo);
+    border-radius: 20px;
+    background-color: #cbcbcb80;
+    border: 1px solid black;
+    padding: 20px;
 }
 
 .sobre img,
@@ -191,7 +218,9 @@ img {
 .sobre button {
     width: 60%;
     margin: 30px 0px;
+    font-size: 18px;
 }
+
 /* agendamento */
 
 .agendamento {
@@ -212,6 +241,7 @@ img {
     width: 40%;
     padding: 40px;
     margin: 20px auto;
+    font-size: 18px;
 }
 
 /* depoimento */
@@ -222,7 +252,8 @@ img {
     background-color: var(--diversos);
 }
 
-.depoimento {
+.depoimento,
+.containerCards {
     width: 400px;
     margin: auto;
     display: flex;
@@ -236,11 +267,11 @@ img {
     background-color: #27322980;
     border: 2px solid #000;
     margin: 30px auto;
-    padding: 30px;
+    padding: 15px;
     text-align: center;
     border-radius: 15px;
-    height: 270px;
-    max-width: 300px;
+    max-width: 241px;
+    font-size: 21px;
 }
 
 /* autor */
@@ -289,6 +320,7 @@ footer>div {
     width: 50%;
     padding: 10px;
     text-align: justify;
+    font-size: 18px;
 }
 
 .fa-envelope,
@@ -338,13 +370,15 @@ footer img {
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
+    background-color: #80808052;
+    border-radius: 15px;
+    box-shadow: -2px 2px 5px 4px #00000042;
 }
 
 #carousel-wrapper {
     display: flex;
     transition: transform 0.5s ease-in-out;
-    align-items: center; 
+    align-items: center;
 }
 
 .carousel-item {
@@ -352,23 +386,19 @@ footer img {
 }
 
 .carousel-item img {
-    max-width: 100%; 
-    height: auto; 
+    height: auto;
     margin: auto;
-    min-height: 500px;
-    width: 100%;
+    max-width: 500px;
 }
 
 #carousel-container button {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 24px;
-    cursor: pointer;
-    background-color: var(--telaFundo);
-    color: white;
-    border: none;
-    outline: none;
+    color: var(--botao);
+    padding: 6px;
+    font-size: 30px;
+    background-color: transparent
 }
 
 #prevBtn {
@@ -379,9 +409,40 @@ footer img {
     right: 10px;
 }
 
-/* Adicionando estilos para tornar o carrossel responsivo */
-@media screen and (max-width: 768px) {
-    .carousel-item {
-        min-width: 100%;
+#prevBtn:hover, #nextBtn:hover{
+    opacity: 0.3;
+}
+
+
+/* Ativar animações quando a seção estiver visível */
+.active {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+/* Animação de fade-in e deslize para cima */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+        transform: translateX(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        transform: translateX(0);
+    }
+}
+
+/* Animação de fade-in e deslize para cima */
+@keyframes fadeInLado {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
