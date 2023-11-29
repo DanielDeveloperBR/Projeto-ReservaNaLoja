@@ -251,7 +251,9 @@ img {
     width: 100%;
     background-color: var(--diversos);
 }
-
+.no-animation {
+    animation: none !important;
+}
 .depoimento,
 .containerCards {
     width: 400px;
@@ -260,6 +262,7 @@ img {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    animation: esse 0.8s ease-out, transform 0.8s ease-out;
 }
 
 .depoimento div {
@@ -272,6 +275,18 @@ img {
     border-radius: 15px;
     max-width: 241px;
     font-size: 21px;
+}
+.containerDepoimento.active {
+    animation: esse 0.8s ease-out, transform 0.8s ease-out, fadeInBackground 0.8s ease-out;
+}
+@keyframes fadeInBackground {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 /* autor */
@@ -360,6 +375,12 @@ footer img {
     color: rgb(154, 235, 231);
 }
 
+.fa-face-dizzy{
+    color: rgb(168, 168, 19);
+    font-size: 20px;
+    font-weight: bolder;
+
+}
 /* Estilo para o carrossel */
 #carousel-container {
     max-width: 1200px;
@@ -445,5 +466,17 @@ footer img {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@keyframes esse {
+    from {
+        opacity: 0;
+        transition: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transition: translateY(0);
     }
 }
