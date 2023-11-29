@@ -49,6 +49,8 @@ function eventoCep(cepAtual) {
     }
 
     try {
+      mostrarLoanding()
+
       const response = await fetch(`http://localhost:3000/cep/${cep}/`, {
         method: 'GET',
         headers: {
@@ -63,7 +65,7 @@ function eventoCep(cepAtual) {
       const result = await response.json();
 
       if (cepAtual.id === 'cepCliente') {
-        preencherCampos(result, formularios.querySelector('#formCliente'), cepAtual);
+        preencherCampos(result, formularios.querySelector('#formCliente'), cepAtual)
       } else if (cepAtual.id === 'cepEmpresa') {
         preencherCampos(result, formularios.querySelector('#formEmpresa'), cepAtual);
       } else if (result.erro) {
@@ -73,6 +75,9 @@ function eventoCep(cepAtual) {
     } catch (error) {
       resetarCampos(cepAtual);
       mostrarMensagem('Erro ao buscar CEP');
+    }finally{
+      esconderLoading()
+
     }
   });
 }
@@ -171,7 +176,6 @@ function previewImageCliente(previewId) {
     previewImg.src = '';
   }
 }
-
 
 function preveImagem(previewId) {
   console.log('Função previewImagemEmpresa chamada.');
@@ -272,8 +276,6 @@ formularios.querySelector('#formEmpresa').addEventListener("submit", async (even
     });
 });
 
-
-
 // Cadastrar o cliente
 formularios.querySelector('#formCliente').addEventListener("submit", (event) => {
   event.preventDefault();
@@ -294,9 +296,8 @@ formularios.querySelector('#formCliente').addEventListener("submit", (event) => 
     return;
   }
 
-  if (nome.trim() === "" || senha.trim() === "" || email.trim() === "" || cep.value.trim() === "" || !cepValido) {
+  if (nome.trim() === "" || senha.trim() === "" || email.trim() === "" || cep.value.trim() === "") {
     alert("Preencha todos os campos");
-    console.log("preencha todos os campos")
     return;
   }
 

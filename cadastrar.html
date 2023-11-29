@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="fontawesome-free-6.4.2-web/css/all.css">
     <link rel="stylesheet" href="css/responsivo.css">
     <link rel="stylesheet" href="css/formulario.css">
+    <link rel="stylesheet" href="/css/loading.css">
+    <link rel="stylesheet" href="css/modal.css">
     <title>Cadastrar</title>
 </head>
 <style>
@@ -26,6 +28,9 @@
         </nav>
     </header>
     <div class="containerGeral">
+        <div id="modal">
+            <div id="loading-spinner"></div>
+         </div>
         <section class="agendamento">
             <h1>Criar uma conta</h1>
             <fieldset>
@@ -126,6 +131,7 @@
         </div>
         <p>&copy; Todos os direitos reservados</p>
     </footer>
+    <script src="js/loading.js"></script>
     <script src="js/cadastrar.js"></script>
     <script defer src="fontawesome-free-6.4.2-web/js/all.js"></script>
     <script src="js/responsivo.js"></script>
