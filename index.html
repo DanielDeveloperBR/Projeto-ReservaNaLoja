@@ -200,24 +200,22 @@
     <!-- Animacao -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            const sections = document.querySelectorAll("section");
+            const sections = document.querySelectorAll("section")
     
             function checkVisibility() {
                 sections.forEach((section) => {
-                    const rect = section.getBoundingClientRect();
-                    const isVisible = rect.top < window.innerHeight * 0.8 && rect.bottom >= 0;
+                    const rect = section.getBoundingClientRect()
+                    const isVisible = rect.top < window.innerHeight * 0.8 && rect.bottom >= 0
                     if (isVisible) {
-                        section.classList.add("active");
+                        section.classList.add("active")
                     }
-                });
+                })
             }
     
-            window.addEventListener("scroll", checkVisibility);
-            window.addEventListener("resize", checkVisibility);
-            checkVisibility(); // Executar verificação inicial
-    
-            // Adicione mais lógica conforme necessário
-        });
+            window.addEventListener("scroll", checkVisibility)
+            window.addEventListener("resize", checkVisibility)
+            checkVisibility()
+        })
     </script>
     
 </body>

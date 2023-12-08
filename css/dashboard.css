@@ -1,98 +1,77 @@
 @charset "UTF-8";
+
 .agenda {
-    flex-direction: column;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    width: 300px;
-    margin: 30px auto;
-    box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.24);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  width: 300px;
+  margin: 30px auto;
+  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.24);
 }
+
 h1 {
-    font-size: 24px;
+  font-size: 24px;
 }
+
 .form {
-    margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 20px;
 }
-input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
+
+
+
 button {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-.agenda label{
-    font-weight: bolder;
-}
-
-.agendamentos {
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 1200px;
-    text-align: center;
-    margin: auto;
-    justify-content: space-evenly;
-    align-items: center;
-  }
-  
-  .agendamentos>div {
-      margin: 10px;
-      background-color: var(--section);
-      max-width: 350px;
-      border-radius: 30px;
-      box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.16);
-      text-align: center;
-      padding: 20px;
-  }
-  .agendamentos > div p{
-    margin: 10px auto;
-  }
-  .agendamentos h2{
-    margin: 0;
-  }
-  header #perfil{
-    max-width: 50px;
-    max-height: 50px;
-    border-radius: 30px;
-    border: 2px solid white;
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.13);
-    cursor: pointer;
-    width: 50px;
-    height: 50px;
-  }
-  header{
-    padding: 10px 20px;
-  }
-
-  /* Adicione estilos para o ícone de notificação */
-.notification-icon, #notificacao {
-  position: absolute;
-  top: 0px;
-  right: 5px;
-  color: white;
-  border-radius: 50%;
-  padding: 5px;
+  background-color: var(--botao);
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
 }
-#notificacao {
-  position: absolute;
-  font-size: 20px;
-  top: 10px;
-  right: 10px;
-}
-.notification-icon{
-  background-color: red;
-  font-size: 14px;
-  padding: 3px;
-  min-height: 10px;
-  min-width: 20px;
+
+
+.agendamentos {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
   text-align: center;
+  margin: auto;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.agendamentos>div {
+  margin: 10px;
+  background-color: var(--section);
+  max-width: 350px;
+  border-radius: 30px;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.16);
+  text-align: center;
+  padding: 20px;
+}
+
+.agendamentos>div p {
+  margin: 10px auto;
+}
+
+.agendamentos h2 {
+  margin: 0;
+}
+
+header #perfil {
+  max-width: 50px;
+  max-height: 50px;
+  border-radius: 30px;
+  border: 2px solid white;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.13);
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+}
+
+header {
+  padding: 10px 20px;
 }
