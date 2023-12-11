@@ -27,11 +27,15 @@
 body {
     height: 100vh;
 }
+strong{
+    font-size: 1.1em;
+}
 
-
-h1 {
+h1,h2 {
     font-family: var(--tituloH1);
     margin: 20px 0;
+}
+h1{
     font-size: 30px;
 }
 
@@ -130,6 +134,8 @@ img {
     margin-bottom: 40px;
 }
 
+
+
 /* Principal */
 .container {
     position: relative;
@@ -142,6 +148,28 @@ img {
     transform: translateY(50px);
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
+.container h1, .container p, .container img, .container button, .container{
+    z-index: 1;
+    position: relative;
+
+}
+.container::after {
+    content: ""; 
+    position: absolute;
+    background-image: url('../img/agenda\ horarios2.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    opacity: 0.5;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 0;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+}
 
 .container.active {
     opacity: 1;
@@ -150,7 +178,6 @@ img {
 
 .container h1 {
     position: relative;
-    /* z-index: 0; */
     max-width: 316px;
     letter-spacing: 0em;
     font-size: 4em;
@@ -233,7 +260,8 @@ img {
 
 .agendamento img {
     margin-top: 20px;
-    width: 20em;
+    width: 30em;
+    max-height: 400px;
     border-radius: 20px;
 }
 
@@ -251,9 +279,11 @@ img {
     width: 100%;
     background-color: var(--diversos);
 }
+
 .no-animation {
     animation: none !important;
 }
+
 .depoimento,
 .containerCards {
     width: 400px;
@@ -276,9 +306,11 @@ img {
     max-width: 241px;
     font-size: 21px;
 }
+
 .containerDepoimento.active {
     animation: esse 0.8s ease-out, transform 0.8s ease-out, fadeInBackground 0.8s ease-out;
 }
+
 @keyframes fadeInBackground {
     from {
         opacity: 0;
@@ -306,7 +338,12 @@ footer {
     flex-direction: column;
     align-items: center;
 }
-
+footer p a{
+    opacity: 0.6;
+    color: white;
+    font-style: italic;
+    font-size: 0.8em;
+}
 footer>div {
     display: flex;
     justify-content: space-between;
@@ -340,7 +377,7 @@ footer>div {
 
 .fa-envelope,
 .fa-whatsapp,
-.fa-phone {
+.fa-linkedin {
     max-width: 50px;
     width: 50%;
     padding: 10px;
@@ -356,7 +393,7 @@ footer img {
 
 .fa-envelope:hover,
 .fa-whatsapp:hover,
-.fa-phone:hover {
+.fa-linkedin:hover {
     transition: transform 0.3s, opacity 0.3s;
     cursor: pointer;
     transform: scale(1.3);
@@ -371,21 +408,20 @@ footer img {
     color: #a4c639;
 }
 
-.fa-phone {
-    color: rgb(154, 235, 231);
+.fa-linkedin {
+    color: #756aa7;
 }
 
-.fa-face-dizzy{
+.fa-face-dizzy {
     color: rgb(168, 168, 19);
     font-size: 20px;
     font-weight: bolder;
 
 }
+
 /* Estilo para o carrossel */
 #carousel-container {
-    max-width: 1200px;
     width: 100%;
-    max-height: 500px;
     overflow: hidden;
     position: relative;
     display: flex;
@@ -393,23 +429,26 @@ footer img {
     align-items: center;
     background-color: #80808052;
     border-radius: 15px;
-    box-shadow: -2px 2px 5px 4px #00000042;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    max-height: 600px; /* Defina a altura máxima desejada */
 }
 
 #carousel-wrapper {
     display: flex;
     transition: transform 0.5s ease-in-out;
     align-items: center;
+    width: 100%;
 }
 
 .carousel-item {
     min-width: 100%;
+    overflow: hidden; /* Certifique-se de que as imagens não ultrapassem os limites do contêiner */
 }
 
 .carousel-item img {
-    height: auto;
-    margin: auto;
-    max-width: 500px;
+    max-height: 720px;
+    width: 100%; /* Garante que a imagem preencha todo o contêiner */
+    height: auto; /* Para manter a proporção original da imagem */
     border-radius: 10px;
 }
 
@@ -420,7 +459,11 @@ footer img {
     color: var(--botao);
     padding: 6px;
     font-size: 30px;
-    background-color: transparent
+    background-color: transparent;
+    font-size: clamp(30px, 5vw, 60px);
+    opacity: 0.7;
+    border: none;
+    cursor: pointer;
 }
 
 #prevBtn {
@@ -431,9 +474,11 @@ footer img {
     right: 10px;
 }
 
-#prevBtn:hover, #nextBtn:hover{
-    opacity: 0.3;
+#prevBtn:hover,
+#nextBtn:hover {
+    opacity: 0.8;
 }
+
 
 
 /* Ativar animações quando a seção estiver visível */

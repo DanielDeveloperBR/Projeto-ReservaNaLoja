@@ -131,6 +131,9 @@
 }
 
 @media all and (max-width: 300px) {
+    .container h1{
+        font-size: 2em;
+    }
     .sobre, .disponivel, .containerDepoimento, .agendamento{
         max-width: 70%;
         margin: auto;
@@ -138,7 +141,9 @@
     .container button {
         font-size: 12px;
     }
-
+    .sobre button{
+        width: 100%;
+    }
     .sobre p,
     .disponivel p,
     .agendamento p {
@@ -152,8 +157,17 @@
     }
 
     .container p, .container {
-        max-width: 80%;
+        max-width: 90%;
         margin: auto;
+    }
+    #carousel-container {
+        width: 90vw !important;
+    }
+    .carousel-item img{
+        height: 50vh;
+    }
+    .container::after{
+        background-image: none;
     }
 }
 

@@ -41,11 +41,17 @@
         </section>
         <!-- Aqui mostra os horarios disponiveis da empresa -->
         <section class="disponivel">
+           
             <div>
-                <h1>Está disponivel esse horario</h1>
-                <p>Destaque o diferencial dos seus horários para proporcionar uma experiência única aos seus clientes. Na nossa plataforma, acreditamos em oferecer não apenas serviços, mas momentos especiais. Seja através de um atendimento personalizado, flexibilidade de agendamento ou outros benefícios exclusivos, seus clientes vão apreciar a conveniência e a qualidade que só a sua empresa pode oferecer. Personalize seus horários e faça cada agendamento uma oportunidade para encantar!</p>
+                <h1>Horários Disponíveis para Você</h1>
+                <div>
+                    <p>Destaque a exclusividade dos seus horários para proporcionar uma experiência única aos seus clientes. Na nossa plataforma, acreditamos em oferecer não apenas serviços, mas momentos especiais.<br><br>
+                    Seja através de um atendimento personalizado, flexibilidade de agendamento ou outros benefícios exclusivos, seus clientes vão apreciar a conveniência e a qualidade que só a sua empresa pode oferecer.<br><br>
+                    Personalize seus horários e transforme cada agendamento em uma oportunidade para encantar!</p>
+                </div>
 
             </div>
+            <h2>Empresas cadastradas</h2>
             <div id="carousel-container">
                 <div id="carousel-wrapper">
                     <!-- Imagens do carrossel serão adicionadas dinamicamente aqui -->
@@ -57,7 +63,7 @@
         <!-- Sobre a empresa -->
         <section class="sobre">
             <h1>Sobre a empresa</h1>
-            <p>Agendamento Expresso, onde a reserva de horários é mais do que uma conveniência. É um testemunho do nosso compromisso em oferecer um serviço impecável, onde cada agendamento reflete a qualidade excepcional que nos torna únicos no setor.</p>
+            <p><strong>Agendamento Expresso</strong>, onde a reserva de horários é mais do que uma conveniência. É um testemunho do nosso compromisso em oferecer um serviço impecável, onde cada agendamento reflete a qualidade excepcional que nos torna únicos no setor.</p>
 
             <button id="sobre">Saiba mais</button>
         </section>
@@ -68,10 +74,8 @@
             </div>
             <div>
                 <h1>Agendamento Expresso</h1>
-                <p>O projeto 'Agendamento Expresso' foi desenvolvido para permitir que os clientes de diversas empresas
-                    possam agendar horários para atendimento. Ele pode ser adaptado para diferentes tipos de negócios,
-                    como salões de beleza, massagistas, médicos e outras empresas que necessitam de agendamento de
-                    horários!</p>
+                <p>O <strong>Agendamento Expresso</strong> foi desenvolvido para permitir que os clientes de diversas empresas possam agendar horários para atendimento.<br><br> Ele pode ser adaptado para diferentes tipos de negócios, como salões de beleza, massagistas, médicos e outras empresas que necessitam de agendamento de horários!
+                </p>
             </div>
             <button class="botaoCadastrar">Cadastrar Empresa</button>
         </section>
@@ -80,21 +84,15 @@
             <div class="depoimento">
                 <h1>Depoimentos</h1>
                 <div class="containerCards">
-                    <p>O 'Agendamento Expresso' tornou minha vida mais fácil! Agendar um horário no meu salão de beleza
-                        favorito agora é uma brisa. Não preciso mais esperar em filas ou ligar para agendar. Basta
-                        alguns cliques, e meu horário está reservado.</p>
+                    <p>O <strong>Agendamento Expresso</strong> tornou minha vida mais fácil! Agendar um horário no meu salão de beleza favorito agora é uma brisa.<br><br> Não preciso mais esperar em filas ou ligar para agendar. Basta alguns cliques, e meu horário está reservado.</p>
                     <p class="autor">Maria, Cliente do Salão de Beleza</p>
                 </div>
                 <div class="containerCards">
-                    <p>Como alguém com uma agenda lotada, o 'Agendamento Expresso' me economiza muito tempo. Marcar
-                        consultas
-                        médicas é rápido e simples. Recomendo a todos que precisam de atendimento médico eficiente.</p>
+                    <p>Como alguém com uma agenda lotada, o <strong>Agendamento Expresso</strong> me economiza muito tempo. Marcar consultas médicas é rápido e simples.<br><br> Recomendo a todos que precisam de atendimento médico eficiente.</p>
                     <p class="autor">João, Paciente do Consultório Médico</p>
                 </div>
                 <div class="containerCards">
-                    <p>Adoro a praticidade do 'Agendamento Expresso'. Agora, posso garantir meu horário preferido no
-                        estúdio
-                        de massagem sempre que quiser relaxar. É tão conveniente e me poupa muito tempo.</p>
+                    <p>Adoro a praticidade do <strong>Agendamento Expresso</strong>. Agora, posso garantir meu horário preferido no estúdio de massagem sempre que quiser relaxar.<br><br> É tão conveniente e me poupa muito tempo.</p>
                     <p class="autor">Carla, Cliente do Estúdio de Massagem</p>
                 </div>
             </div>
@@ -105,16 +103,18 @@
         <div class="containerSocial">
             <div class="contatos">
 
-                <p>(21) 96778-2777</p>
+                <p><strong><a href="https://wa.me/5521967782777?text=Olá, Vim pelo seu Agendamento Expresso.">(21) 96778-2777</a></strong></p>
                 <i class="fa-brands fa-whatsapp social"></i>
 
             </div>
             <div class="contatos">
-                <p>(21) 96778-2777</p>
-                <i class="fa-solid fa-phone social"></i>
+                <p>
+                    <a href="https://www.linkedin.com/in/daniel-desenvolvedor">Linkedin</a>
+                </p>
+                <i class="fa-brands fa-linkedin"></i>
             </div>
             <div class="contatos">
-                <p>danieldetrabalho1@gmail.com</p>
+                <p><a href="mailto:danieldetrabalho1@gmail.com">danieldetrabalho1@gmail.com</a></p>
                 <i class="fa-regular fa-envelope social"></i>
             </div>
         </div>
@@ -143,12 +143,13 @@
             try {
                 const response = await fetch('http://localhost:3000/empresa');
                 const empresaData = await response.json();
-                console.log(empresaData)
                 const imagens = empresaData.foto.map(item => item.imagemEmpresa);
-                console.log(imagens)
 
-                const carouselWrapper = document.getElementById('carousel-wrapper');
-
+                const carouselWrapper = document.getElementById('carousel-wrapper')
+                carouselWrapper.style.cursor = 'pointer'
+                carouselWrapper.addEventListener('click',()=>{
+                    window.location.href = 'login.html'
+                })
                 const prevBtn = document.getElementById('prevBtn');
                 const nextBtn = document.getElementById('nextBtn');
 
@@ -165,6 +166,7 @@
                     });
                 } else {
                     // Adicione a lógica para exibir a imagem padrão
+                    carouselWrapper.style.cursor = 'none'
                     const divSlide = document.createElement('div');
                     divSlide.classList.add('carousel-item');
                     const img = document.createElement('img');
