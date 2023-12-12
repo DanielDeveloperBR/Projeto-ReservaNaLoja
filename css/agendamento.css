@@ -23,6 +23,7 @@
     input[type='submit'], label{
         font-weight: bolder;
         margin: 5px auto;
+        color: white;
     }
 
     .message {
