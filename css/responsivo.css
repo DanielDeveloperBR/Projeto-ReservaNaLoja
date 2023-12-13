@@ -6,49 +6,7 @@
     font-size: 20px;
     padding: 10px;
 }
-menu{
-    display: none;
-    align-items: flex-start;
-    justify-content: center;
-    padding: 20px;
-    top: 0%;
-    left: 0%;
-    max-width: 100px;
-    width: 100%;
-    background-color: var(--telaFundo);
-    opacity: 0.9;
-    position: absolute;
-    z-index: 1;
-    height: 100vh;
-    animation: transicao 0.5s ease forwards;
-}
-@keyframes transicao{
-    to{
-        opacity: 0.9;
-        transform: translate(0%);
-    }
-    from{
-        opacity: 0;
-        transform: translate(-100%);
-    }
-}
-#menu-after {
-    content: 'X';
-    display: block;
-    position: absolute;
-    top: 0%;
-    right: -35%;
-    text-align: center;
-    color: white;
-    font-weight: bolder;
-    font-size: 1.3em;
-    cursor: pointer;
-}
 
-header span:hover{
-    opacity: 0.3;
-    cursor: pointer;
-}
 
 /* ipad */
 @media all and (max-width: 860px) {
