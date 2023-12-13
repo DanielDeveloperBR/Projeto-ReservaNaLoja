@@ -45,7 +45,7 @@ h1{
     top: 50%;
     transform: translate(-50%,-50%);
     color: white;
-    font-size: 30px;
+    font-size: clamp(25px,5vw,40px);
 }
 
 p,
