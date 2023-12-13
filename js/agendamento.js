@@ -1,14 +1,20 @@
+let esperar = false
 function showMessage(message) {
+    if (esperar == true){
+        return
+    }
     const messageElement = document.createElement('div');
     messageElement.textContent = message;
     messageElement.classList.add('message');
     document.body.appendChild(messageElement);
-    messageElement.classList.add('show');
+    messageElement.classList.add('show')
+    esperar = true
     setTimeout(() => {
         messageElement.classList.remove('show');
         setTimeout(() => {
             document.body.removeChild(messageElement);
-        }, 300);
+        }, 300)
+        esperar = false
     }, 3000);
 }
 

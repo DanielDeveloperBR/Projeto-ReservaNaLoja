@@ -38,6 +38,15 @@ h1,h2 {
 h1{
     font-size: 30px;
 }
+/* Mensagem quando nao tiver disponivel uma empresa */
+.mensagem{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    color: white;
+    font-size: 30px;
+}
 
 p,
 a {

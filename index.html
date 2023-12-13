@@ -41,13 +41,17 @@
         </section>
         <!-- Aqui mostra os horarios disponiveis da empresa -->
         <section class="disponivel">
-           
+
             <div>
                 <h1>Horários Disponíveis para Você</h1>
                 <div>
-                    <p>Destaque a exclusividade dos seus horários para proporcionar uma experiência única aos seus clientes. Na nossa plataforma, acreditamos em oferecer não apenas serviços, mas momentos especiais.<br><br>
-                    Seja através de um atendimento personalizado, flexibilidade de agendamento ou outros benefícios exclusivos, seus clientes vão apreciar a conveniência e a qualidade que só a sua empresa pode oferecer.<br><br>
-                    Personalize seus horários e transforme cada agendamento em uma oportunidade para encantar!</p>
+                    <p>Destaque a exclusividade dos seus horários para proporcionar uma experiência única aos seus
+                        clientes. Na nossa plataforma, acreditamos em oferecer não apenas serviços, mas momentos
+                        especiais.<br><br>
+                        Seja através de um atendimento personalizado, flexibilidade de agendamento ou outros benefícios
+                        exclusivos, seus clientes vão apreciar a conveniência e a qualidade que só a sua empresa pode
+                        oferecer.<br><br>
+                        Personalize seus horários e transforme cada agendamento em uma oportunidade para encantar!</p>
                 </div>
 
             </div>
@@ -63,7 +67,9 @@
         <!-- Sobre a empresa -->
         <section class="sobre">
             <h1>Sobre a empresa</h1>
-            <p><strong>Agendamento Expresso</strong>, onde a reserva de horários é mais do que uma conveniência. É um testemunho do nosso compromisso em oferecer um serviço impecável, onde cada agendamento reflete a qualidade excepcional que nos torna únicos no setor.</p>
+            <p><strong>Agendamento Expresso</strong>, onde a reserva de horários é mais do que uma conveniência. É um
+                testemunho do nosso compromisso em oferecer um serviço impecável, onde cada agendamento reflete a
+                qualidade excepcional que nos torna únicos no setor.</p>
 
             <button id="sobre">Saiba mais</button>
         </section>
@@ -74,7 +80,10 @@
             </div>
             <div>
                 <h1>Agendamento Expresso</h1>
-                <p>O <strong>Agendamento Expresso</strong> foi desenvolvido para permitir que os clientes de diversas empresas possam agendar horários para atendimento.<br><br> Ele pode ser adaptado para diferentes tipos de negócios, como salões de beleza, massagistas, médicos e outras empresas que necessitam de agendamento de horários!
+                <p>O <strong>Agendamento Expresso</strong> foi desenvolvido para permitir que os clientes de diversas
+                    empresas possam agendar horários para atendimento.<br><br> Ele pode ser adaptado para diferentes
+                    tipos de negócios, como salões de beleza, massagistas, médicos e outras empresas que necessitam de
+                    agendamento de horários!
                 </p>
             </div>
             <button class="botaoCadastrar">Cadastrar Empresa</button>
@@ -84,15 +93,21 @@
             <div class="depoimento">
                 <h1>Depoimentos</h1>
                 <div class="containerCards">
-                    <p>O <strong>Agendamento Expresso</strong> tornou minha vida mais fácil! Agendar um horário no meu salão de beleza favorito agora é uma brisa.<br><br> Não preciso mais esperar em filas ou ligar para agendar. Basta alguns cliques, e meu horário está reservado.</p>
+                    <p>O <strong>Agendamento Expresso</strong> tornou minha vida mais fácil! Agendar um horário no meu
+                        salão de beleza favorito agora é uma brisa.<br><br> Não preciso mais esperar em filas ou ligar
+                        para agendar. Basta alguns cliques, e meu horário está reservado.</p>
                     <p class="autor">Maria, Cliente do Salão de Beleza</p>
                 </div>
                 <div class="containerCards">
-                    <p>Como alguém com uma agenda lotada, o <strong>Agendamento Expresso</strong> me economiza muito tempo. Marcar consultas médicas é rápido e simples.<br><br> Recomendo a todos que precisam de atendimento médico eficiente.</p>
+                    <p>Como alguém com uma agenda lotada, o <strong>Agendamento Expresso</strong> me economiza muito
+                        tempo. Marcar consultas médicas é rápido e simples.<br><br> Recomendo a todos que precisam de
+                        atendimento médico eficiente.</p>
                     <p class="autor">João, Paciente do Consultório Médico</p>
                 </div>
                 <div class="containerCards">
-                    <p>Adoro a praticidade do <strong>Agendamento Expresso</strong>. Agora, posso garantir meu horário preferido no estúdio de massagem sempre que quiser relaxar.<br><br> É tão conveniente e me poupa muito tempo.</p>
+                    <p>Adoro a praticidade do <strong>Agendamento Expresso</strong>. Agora, posso garantir meu horário
+                        preferido no estúdio de massagem sempre que quiser relaxar.<br><br> É tão conveniente e me poupa
+                        muito tempo.</p>
                     <p class="autor">Carla, Cliente do Estúdio de Massagem</p>
                 </div>
             </div>
@@ -103,7 +118,8 @@
         <div class="containerSocial">
             <div class="contatos">
 
-                <p><strong><a href="https://wa.me/5521967782777?text=Olá, Vim pelo seu Agendamento Expresso.">(21) 96778-2777</a></strong></p>
+                <p><strong><a href="https://wa.me/5521967782777?text=Olá, Vim pelo seu Agendamento Expresso.">(21)
+                            96778-2777</a></strong></p>
                 <i class="fa-brands fa-whatsapp social"></i>
 
             </div>
@@ -146,12 +162,12 @@
                 const imagens = empresaData.foto.map(item => item.imagemEmpresa);
 
                 const carouselWrapper = document.getElementById('carousel-wrapper')
-                carouselWrapper.style.cursor = 'pointer'
-                carouselWrapper.addEventListener('click',()=>{
-                    window.location.href = 'login.html'
-                })
+
                 const prevBtn = document.getElementById('prevBtn');
                 const nextBtn = document.getElementById('nextBtn');
+                function redirectToLogin() {
+                    window.location.href = 'login.html';
+                }
 
                 if (imagens.length > 0) {
                     imagens.forEach(imagem => {
@@ -163,18 +179,25 @@
                         carouselWrapper.appendChild(divSlide);
                         nextBtn.style.display = 'block'
                         prevBtn.style.display = 'block'
+                        carouselWrapper.style.cursor = 'pointer'
+                        carouselWrapper.addEventListener('click', redirectToLogin);
                     });
                 } else {
                     // Adicione a lógica para exibir a imagem padrão
-                    carouselWrapper.style.cursor = 'none'
+                    carouselWrapper.style.cursor = 'default'
                     const divSlide = document.createElement('div');
+                    const msg = document.createElement('h2');
+                    msg.classList.add('mensagem')
+                    msg.textContent = 'Nenhum agendamento disponível. Tente novamente mais tarde.'
                     divSlide.classList.add('carousel-item');
                     const img = document.createElement('img');
                     img.src = "./img/bgCalendario.png";
+                    divSlide.appendChild(msg);
                     divSlide.appendChild(img);
                     carouselWrapper.appendChild(divSlide);
                     prevBtn.style.display = 'none'
                     nextBtn.style.display = 'none'
+                    carouselWrapper.removeEventListener('click', redirectToLogin);
                 }
 
                 let currentIndex = 0
@@ -203,7 +226,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const sections = document.querySelectorAll("section")
-    
+
             function checkVisibility() {
                 sections.forEach((section) => {
                     const rect = section.getBoundingClientRect()
@@ -213,13 +236,13 @@
                     }
                 })
             }
-    
+
             window.addEventListener("scroll", checkVisibility)
             window.addEventListener("resize", checkVisibility)
             checkVisibility()
         })
     </script>
-    
+
 </body>
 
 </html>
