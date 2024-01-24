@@ -1,7 +1,7 @@
 const botao = document.getElementById("logout")
 botao.addEventListener("click", (e) => {
     e.preventDefault()
-    fetch('http://localhost:3000/logout', {
+    fetch('https://backend-express-ten.vercel.app/logout', {
         method: 'GET'
     })
         .then((response) => response.text())
