@@ -23,7 +23,7 @@ form.addEventListener("submit", async (e) => {
     const login = form.login.value;
     const senha = form.senha.value;
     try {
-        const response = await fetch('https://backend-express-ten.vercel.app/usuario/login', {
+        const response = await fetch('https://backend-express-mu.vercel.app/login', {
             method: 'POST',
             headers: {
                 'Accept': 'text/html',
@@ -33,7 +33,7 @@ form.addEventListener("submit", async (e) => {
         });
 
         if (response.ok) {
-            window.location.href = 'https://backend-express-ten.vercel.app/dashboard';
+            window.location.href = 'https://backend-express-mu.vercel.app/dashboard';
         } else {
             alert("Login ou senha incorretos!")
         }

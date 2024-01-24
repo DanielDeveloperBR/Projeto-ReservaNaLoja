@@ -51,7 +51,7 @@ function eventoCep(cepAtual) {
     try {
       mostrarLoanding()
 
-      const response = await fetch(`https://backend-express-ten.vercel.app/cep/${cep}/`, {
+      const response = await fetch(`https://backend-express-mu.vercel.app/cep/${cep}/`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -255,7 +255,7 @@ formularios.querySelector('#formEmpresa').addEventListener("submit", async (even
   formData.append('imagemEmpresa', imagemEmpresa);
   formData.append('categoria', categoria);
 
-  fetch('https://backend-express-ten.vercel.app/empresa', {
+  fetch('https://backend-express-mu.vercel.app/empresa', {
     method: 'POST',
     body: formData,
   })
@@ -320,7 +320,7 @@ formularios.querySelector('#formCliente').addEventListener("submit", (event) => 
   formData.append('endereco', endereco.value);
   formData.append('estado', estado.value);
   formData.append('imagemPerfil', imagemPerfil);
-  fetch('https://backend-express-ten.vercel.app/usuario', {
+  fetch('https://backend-express-mu.vercel.app/usuario', {
     method: 'POST',
     body: formData,
   })

@@ -162,7 +162,7 @@
         window.addEventListener('DOMContentLoaded', async () => {
 
             try {
-                const response = await fetch('https://backend-express-ten.vercel.app/empresa');
+                const response = await fetch('https://backend-express-mu.vercel.app/empresa');
                 const empresaData = await response.json();
                 const imagens = empresaData.foto.map(item => item.imagemEmpresa);
 
