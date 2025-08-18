@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ReservaNaLoja — Documentação Técnica (Frontend)</title>
+  <link rel="stylesheet" href="css/documentacao.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>ReservaNaLoja — Documentação Técnica (Frontend)</h1>
+    <div class="badges">
+      <span class="badge">Entrada: Projeto-ReservaNaLoja-Daniel/index.html</span>
+      <span class="badge">Páginas: 5</span>
+      <span class="badge">CSS: 27</span>
+      <span class="badge">JS: 22</span>
+    </div>
+
+    <div class="grid grid-2">
+      <div class="card">
+        <h2>Visão Geral</h2>
+        <p>Frontend estático para reservas em loja. Estruturado em HTML/CSS/JS sem dependências de build. Código focado
+          em responsividade, menus reutilizáveis e formulários (login/cadastro/agendamento).</p>
+        <div class="hr"></div>
+        <div class="kv">
+          <div>Stack</div>
+          <div>HTML5, CSS3, JavaScript (Vanilla)</div>
+          <div>Estrutura</div>
+          <div><code class="code">/Projeto-ReservaNaLoja-Daniel/</code></div>
+          <div>Como rodar</div>
+          <div>Abrir <code class="code">Projeto-ReservaNaLoja-Daniel/index.html</code> no navegador (ou Live Server).
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Arquitetura</h2>
+        <pre class="code">Projeto-ReservaNaLoja-Daniel/
+├─ index.html
+├─ login.html
+├─ cadastrar.html
+├─ faq.html
+├─ sobre.html
+├─ css/
+└─ js/</pre>
+        <p class="small">Estrutura simplificada. Pastas de <em>assets</em> (imagens/ícones) permanecem conforme o
+          projeto.</p>
+      </div>
+    </div>
+
+    <div class="grid grid-3">
+      <div class="card">
+        <h2>Telas Principais</h2>
+        <ul>
+          <li><strong>Cadastro</strong> — <span class='small'>Projeto-ReservaNaLoja-Daniel/cadastrar.html</span></li>
+          <li><strong>Login</strong> — <span class='small'>Projeto-ReservaNaLoja-Daniel/login.html</span></li>
+          <li><strong>FAQ</strong> — <span class='small'>Projeto-ReservaNaLoja-Daniel/faq.html</span></li>
+          <li><strong>Home</strong> — <span class='small'>Projeto-ReservaNaLoja-Daniel/index.html</span></li>
+          <li><strong>Sobre</strong> — <span class='small'>Projeto-ReservaNaLoja-Daniel/sobre.html</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>CSS (núcleo)</h2>
+        <ul>
+          <li>Projeto-ReservaNaLoja-Daniel/css/style.css</li>
+          <li>Projeto-ReservaNaLoja-Daniel/css/dashboard.css</li>
+          <li>Projeto-ReservaNaLoja-Daniel/css/faq.css</li>
+          <li>Projeto-ReservaNaLoja-Daniel/css/sobre.css</li>
+          <li>Projeto-ReservaNaLoja-Daniel/css/agendamento.css</li>
+          <li>Projeto-ReservaNaLoja-Daniel/css/modal.css</li>
+        </ul>
+        <p class="small">Foco em responsividade e componentes reutilizáveis.</p>
+      </div>
+      <div class="card">
+        <h2>JS (módulos-chave)</h2>
+        <ul>
+          <li><strong>cadastrar.js</strong> — Cadastro e validação de formulários.</li>
+          <li><strong>logout.js</strong> — Encerramento de sessão e limpeza de estado.</li>
+          <li><strong>criarModal.js</strong> — Componente/modal reutilizável para diálogos.</li>
+          <li><strong>agendamento.js</strong> — Fluxo e validação do agendamento.</li>
+          <li><strong>menuUsuarios.js</strong> — Controle do menu e navegação do usuário.</li>
+          <li><strong>responsivo.js</strong> — Funções utilitárias e interações de UI.</li>
+          <li><strong>login.js</strong> — Funções utilitárias e interações de UI.</li>
+          <li><strong>loading.js</strong> — Funções utilitárias e interações de UI.</li>
+          <li><strong>brands.min.js</strong> — Funções utilitárias e interações de UI.</li>
+          <li><strong>brands.js</strong> — Funções utilitárias e interações de UI.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid grid-2">
+      <div class="card">
+        <h2>Fluxo de Dados</h2>
+        <ul>
+          <li><code class='code'>http://localhost:3000/empresa</code></li>
+          <li><code class='code'>http://localhost:3000/usuario</code></li>
+          <li><code class='code'>http://localhost:3000/logout</code></li>
+          <li><code class='code'>http://localhost:3000/usuario/login</code></li>
+        </ul>
+        <p class="small">Validação no cliente; se houver integrações, manter endpoints e métodos documentados aqui.</p>
+      </div>
+      <div class="card">
+        <h2>Padrões de Código</h2>
+        <ul>
+          <li>HTML semântico; preferir classes a ids como ganchos de JS.</li>
+          <li>CSS por componentes; media queries no fim do arquivo.</li>
+          <li>JS modular; uma função por responsabilidade; evitar globais.</li>
+          <li>Nomenclatura: kebab-case (CSS) e camelCase (JS).</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid grid-2">
+      <div class="card">
+        <h2>Como Executar</h2>
+        <pre class="code"># Local
+# 1) Abra index.html no navegador
+# ou
+# 2) VSCode → Extensão "Live Server" → Open with Live Server</pre>
+        <p class="small">Em produção, garanta caminhos relativos para assets (./css, ./js, ./img).</p>
+      </div>
+      <div class="card">
+        <h2>Roadmap</h2>
+        <ul>
+          <li>Testes unitários (Jest) para funções críticas.</li>
+          <li>Extrair modal/menu para módulo reutilizável.</li>
+          <li>Minificar CSS/JS para produção.</li>
+          <li>Backend (Node/Express) para reservas persistentes.</li>
+        </ul>
+      </div>
+    </div>
+
+    <footer>Documentação desenvolvido por <a href="https://github.com/DanielDeveloperBR" target="_blank">Daniel S</a>.</footer>
+  </div>
+</body>
+
+</html>
